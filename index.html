@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UR LIFE IS UP — Absolute focus, zero friction, pure dominance. Reprogram your mind and engineer the unstoppable version of yourself.">
+    <meta name="theme-color" content="#010212">
+    <title>UR LIFE IS UP | Elite Performance</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════════
+           RESET & BASE
+        ═══════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+
+        /* Lenis smooth-scroll */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+
+        body {
+            font-family: 'Montserrat', system-ui, sans-serif;
+            background: #010212;
+            color: #fff;
+            overflow-x: hidden;
+            cursor: none;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════
+           WEBGL CANVAS
+        ═══════════════════════════════════════════ */
+        #webgl-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           CUSTOM CURSOR
+        ═══════════════════════════════════════════ */
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 5px; height: 5px;
+            background: #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            will-change: transform;
+            mix-blend-mode: exclusion;
+        }
+        .cursor-ring {
+            position: fixed;
+            top: 0; left: 0;
+            width: 30px; height: 30px;
+            border: 1.5px solid rgba(212, 175, 55, 0.70);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            will-change: transform;
+            transition: width 0.28s ease, height 0.28s ease, border-color 0.28s ease;
+        }
+        .cursor-ring.hover {
+            width: 54px; height: 54px;
+            border-color: rgba(212, 175, 55, 1.0);
+        }
+
+        /* ═══════════════════════════════════════════
+           CURSOR GLOW BLOB
+        ═══════════════════════════════════════════ */
+        #cursor-glow {
+            position: fixed;
+            top: 0; left: 0;
+            width: 680px; height: 680px;
+            pointer-events: none;
+            z-index: 4;
+            background: radial-gradient(circle,
+                rgba(212, 175, 55, 0.13) 0%,
+                rgba(80,  130, 255, 0.05) 35%,
+                transparent 65%);
+            mix-blend-mode: screen;
+            will-change: transform;
+        }
+
+        /* ═══════════════════════════════════════════
+           CINEMATIC VIGNETTE
+        ═══════════════════════════════════════════ */
+        .atmosphere {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 36%, rgba(0,0,0,0.76) 100%);
+        }
+
+        /* ═══════════════════════════════════════════
+           FILM GRAIN
+        ═══════════════════════════════════════════ */
+        .grain {
+            position: fixed;
+            inset: -50%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+        }
+
+        /* ═══════════════════════════════════════════
+           CONTENT LAYER
+        ═══════════════════════════════════════════ */
+        .content { position: relative; z-index: 3; }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0 clamp(1.25rem, 10vw, 8rem);
+        }
+
+        /* ═══════════════════════════════════════════
+           COLOR TOKENS
+        ═══════════════════════════════════════════ */
+        .text-gold   { color: #D4AF37; }
+        .border-gold { border-color: #D4AF37; }
+
+        /* ═══════════════════════════════════════════
+           HERO HEADING — clip containers for reveal
+        ═══════════════════════════════════════════ */
+        .hero-title {
+            font-size: clamp(3.2rem, 11vw, 8.8rem);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+            margin: 0 0 1.4rem;
+        }
+        /* overflow:hidden clip that makes slide-up / drop-down work */
+        .clip-line {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            line-height: 1.10;
+        }
+        .clip-line--block { display: block; }
+        .line-inner {
+            display: inline-block;
+            will-change: transform;
+        }
+        /* "IS  UP" sits on the same flex row */
+        .is-up-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.22em;
+        }
+        /* UP — gold + premium pulsing glow */
+        .up-word { color: #D4AF37; }
+        .up-word.glowing {
+            animation: upPulse 3.2s ease-in-out infinite alternate;
+        }
+        @keyframes upPulse {
+            0%   { text-shadow: 0 0 22px rgba(212,175,55,0.55), 0 0 55px rgba(212,175,55,0.18); }
+            100% { text-shadow: 0 0 58px rgba(212,175,55,1.00), 0 0 116px rgba(212,175,55,0.60), 0 0 190px rgba(212,175,55,0.22); }
+        }
+
+        /* ═══════════════════════════════════════════
+           PROGRESS BAR
+        ═══════════════════════════════════════════ */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px; width: 0%;
+            background: linear-gradient(90deg, #D4AF37, #f7e07e);
+            z-index: 60;
+            box-shadow: 0 0 14px rgba(212,175,55,0.80);
+            transform-origin: left;
+            pointer-events: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           SCROLL HINT
+        ═══════════════════════════════════════════ */
+        .scroll-hint {
+            position: fixed;
+            bottom: 28px; left: 50%;
+            transform: translateX(-50%);
+            color: rgba(212,175,55,0.58);
+            font-size: 10px;
+            letter-spacing: 6px;
+            font-weight: 800;
+            z-index: 10;
+            pointer-events: none;
+            text-align: center;
+        }
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 1px; height: 28px;
+            background: linear-gradient(to bottom, rgba(212,175,55,0.85), transparent);
+            margin: 8px auto 0;
+            animation: scrollPulse 2.4s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(1);   opacity: 0.48; }
+            50%       { transform: scaleY(1.75); opacity: 1.00; }
+        }
+
+        /* ═══════════════════════════════════════════
+           LOADER
+        ═══════════════════════════════════════════ */
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #010212;
+            transition: opacity 0.80s ease 0.15s;
+        }
+        .loader.hidden { opacity: 0; pointer-events: none; }
+        .loader-ring {
+            width: 36px; height: 36px;
+            border: 2px solid rgba(212,175,55,0.13);
+            border-top-color: #D4AF37;
+            border-radius: 50%;
+            animation: spin 0.85s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ═══════════════════════════════════════════
+           PANELS
+        ═══════════════════════════════════════════ */
+        .panel {
+            background: rgba(0,0,0,0.36);
+            backdrop-filter: blur(10px) saturate(120%);
+            -webkit-backdrop-filter: blur(10px) saturate(120%);
+            will-change: transform, opacity;
+            transition: box-shadow 0.45s ease;
+            box-shadow:
+                0 32px 82px -22px rgba(0,0,0,0.92),
+                inset 0 0 0 1px rgba(212,175,55,0.07);
+        }
+        .panel:hover {
+            box-shadow:
+                0 32px 82px -22px rgba(0,0,0,0.92),
+                inset 0 0 0 1px rgba(212,175,55,0.28),
+                0 0 60px 8px rgba(212,175,55,0.11);
+        }
+
+        /* ═══════════════════════════════════════════
+           BUTTON
+        ═══════════════════════════════════════════ */
+        .btn-cta {
+            background: transparent;
+            cursor: none;
+            transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.35s ease;
+        }
+        .btn-cta:hover {
+            background-color: #D4AF37;
+            color: #000;
+            box-shadow:
+                0 0 0 1px rgba(212,175,55,0.65),
+                0 0 40px 8px rgba(212,175,55,0.54),
+                0 0 100px 20px rgba(212,175,55,0.18);
+        }
+
+        /* ═══════════════════════════════════════════
+           REVEAL STATE
+        ═══════════════════════════════════════════ */
+        .reveal { opacity: 0; }
+
+        /* ═══════════════════════════════════════════
+           REDUCED MOTION
+        ═══════════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-hint::after, .loader-ring { animation: none !important; }
+            .up-word.glowing { animation: none !important; }
+            .cursor-dot, .cursor-ring, #cursor-glow { display: none !important; }
+            body { cursor: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loader" id="loader"><div class="loader-ring"></div></div>
+
+    <div id="webgl-container" aria-hidden="true"></div>
+
+    <div class="cursor-dot"  id="cursorDot"  aria-hidden="true"></div>
+    <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+    <div id="cursor-glow"    aria-hidden="true"></div>
+
+    <div class="atmosphere"  aria-hidden="true"></div>
+    <div class="grain"       aria-hidden="true"></div>
+
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="scroll-hint"  id="scrollHint">SCROLL</div>
+
+    <main class="content">
+
+        <!-- ╔════════════ HERO ════════════╗ -->
+        <section class="section justify-center text-center" data-scene="hero">
+            <div data-parallax="0.17">
+                <h1 class="hero-title">
+                    <!-- "UR LIFE" slides up from below -->
+                    <span class="clip-line clip-line--block">
+                        <span class="line-inner" data-slide="up">UR LIFE</span>
+                    </span>
+                    <!-- "IS" slides up · "UP" drops from top -->
+                    <span class="is-up-row">
+                        <span class="clip-line">
+                            <span class="line-inner" data-slide="up">IS</span>
+                        </span>
+                        <span class="clip-line">
+                            <span class="line-inner up-word" data-slide="down">UP</span>
+                        </span>
+                    </span>
+                </h1>
+                <p class="reveal hero-sub text-base md:text-xl text-gray-400 max-w-xl mx-auto font-bold uppercase tracking-[0.22em] leading-relaxed">
+                    Absolute Focus · Zero Friction · Pure Dominance
+                </p>
+            </div>
+        </section>
+
+        <!-- ╔════════════ MIND ════════════╗ -->
+        <section class="section justify-start" data-scene="left">
+            <div class="panel reveal max-w-lg p-10 border-l-4 border-gold" data-parallax="0.13">
+                <div class="text-gold text-xs font-black uppercase tracking-[0.45em] mb-4">01 — Mind</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">Mental Programming</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Destroy limiting beliefs. Install a cognitive operating system optimized for rapid, high-pressure execution and asymmetrical outcomes.
+                </p>
+            </div>
+        </section>
+
+        <!-- ╔════════════ EXECUTION ════════════╗ -->
+        <section class="section justify-end text-right" data-scene="right">
+            <div class="panel reveal max-w-lg p-10 border-r-4 border-gold" data-parallax="0.13">
+                <div class="text-gold text-xs font-black uppercase tracking-[0.45em] mb-4">02 — Execution</div>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">Superhuman Performance</h2>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    Execute with lethal precision. Compress decades into days through advanced automation and strictly structured daily systems.
+                </p>
+            </div>
+        </section>
+
+        <!-- ╔════════════ CAPITAL ════════════╗ -->
+        <section class="section justify-center text-center" data-scene="center">
+            <div class="panel reveal p-12 border border-gray-800 rounded-sm max-w-4xl" data-parallax="0.08">
+                <div class="text-gold text-xs font-black uppercase tracking-[0.45em] mb-4">03 — Capital</div>
+                <h2 class="text-5xl md:text-7xl font-black mb-8 text-gold uppercase tracking-tight"
+                    data-cta-heading
+                    style="text-shadow:0 0 45px rgba(212,175,55,0.40)">
+                    Wealth Engineering
+                </h2>
+                <p class="text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed" data-cta-sub>
+                    Master asymmetric risk. Capitalize on market inefficiencies. Secure total financial sovereignty at the absolute top 1%.
+                </p>
+                <button class="btn-cta border-2 border-gold text-gold font-black text-lg md:text-xl py-4 px-12 md:px-16 uppercase tracking-widest" data-cta-btn>
+                    Initiate Sequence
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Local Three.js (Vite + node_modules) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "/node_modules/three/build/three.module.js",
+            "three/addons/": "/node_modules/three/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module" src="/src/ur-life-app.js"></script>
+</body>
+</html>
