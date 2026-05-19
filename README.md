@@ -8,357 +8,259 @@
 ╚██████╔╝██║  ██║    ███████╗██║██║     ███████╗    ██║███████║    ╚██████╔╝██║
  ╚═════╝ ╚═╝  ╚═╝    ╚══════╝╚╝╚╝     ╚══════╝    ╚═╝╚══════╝     ╚═════╝ ╚═╝
 
-              ▓▓▓  V O I D · G O L D · D O M I N A N C E  ▓▓▓
+         ▓▓▓  T H E   O P E R A T I N G   S Y S T E M   O F   T H E   O P E R A T O R  ▓▓▓
 ```
 
 # **UR LIFE IS UP**
 
-### *Absolute Focus · Zero Friction · Pure Dominance*
+### *Absolute Focus · Zero Friction · Pure Dominance · Sovereign by Design*
 
-> A WebGL ceremony for the operator who refuses average.
-> Built to be felt — not read.
-> Engineered to hit at 60fps minimum. 120fps where the silicon allows.
+> **This is not a platform. This is the operating system of the operator who refuses average.**
+>
+> The blueprint that forges the elite businessman and the high-performance supertrader.
+> The substrate that compounds identity, capital, and time into sovereignty.
 
-[![FPS Floor](https://img.shields.io/badge/FPS%20FLOOR-60-D4AF37?style=for-the-badge&labelColor=000000)]()
-[![Frame Budget](https://img.shields.io/badge/FRAME%20BUDGET-16.67ms-D4AF37?style=for-the-badge&labelColor=000000)]()
-[![GPU Throttle](https://img.shields.io/badge/GPU%20THROTTLE-ZERO-D4AF37?style=for-the-badge&labelColor=000000)]()
-[![Aesthetic](https://img.shields.io/badge/VOID%20×%20GOLD-%23000000%20%2F%20%23D4AF37-D4AF37?style=for-the-badge&labelColor=000000)]()
-[![Status](https://img.shields.io/badge/STATUS-LIVE-D4AF37?style=for-the-badge&labelColor=000000)]()
+[![Mission](https://img.shields.io/badge/MISSION-SOVEREIGNTY-D4AF37?style=for-the-badge&labelColor=000000)]()
+[![Floor](https://img.shields.io/badge/FLOOR-%24100M%20USD-D4AF37?style=for-the-badge&labelColor=000000)]()
+[![Hedge](https://img.shields.io/badge/HEDGE-5%2C000%20KG%20AU-D4AF37?style=for-the-badge&labelColor=000000)]()
+[![Origin](https://img.shields.io/badge/LAUNCHPAD-CAIRO%20·%20EG-D4AF37?style=for-the-badge&labelColor=000000)]()
+[![Identity](https://img.shields.io/badge/IDENTITY-UNSTOPPABLE-D4AF37?style=for-the-badge&labelColor=000000)]()
 
-[**Manifesto**](#-the-manifesto) ·
-[**Aesthetic**](#-the-aesthetic-doctrine) ·
-[**Pipeline**](#-the-render-pipeline) ·
-[**Choreography**](#-the-motion-choreography) ·
-[**Budget**](#-the-frame-budget) ·
-[**Stack**](#-the-stack) ·
-[**Build**](#-the-build)
+[**Declaration**](#-the-declaration) ·
+[**Verdict**](#-the-verdict) ·
+[**Code**](#-the-operators-code) ·
+[**Movements**](#-the-four-movements) ·
+[**Origin**](#-the-origin) ·
+[**Creed**](#-the-creed)
 
 </div>
 
 ---
 
-## 🜂 The Manifesto
+## 🜂 The Declaration
 
-This is not a website.
-This is not a portfolio.
-This is not a landing page.
+UR LIFE IS UP is a **cognitive operating system upgrade** delivered through a 3D WebGL ceremony.
 
-**This is a ceremony.**
+It exists to do one thing — and refuses to do anything else:
 
-Every shader, every easing curve, every millisecond of frame time was chosen to deliver one message to the cortex of whoever lands on it:
+> **Forge the elite operator. Compress decades into days. End the era of average.**
 
-> **You were not built for ordinary. Act accordingly.**
-
-The medium is the message. The performance is the proof.
+This is not motivation. Motivation is the consolation prize of the unserious.
+This is **architecture**. The architecture of identity, capital, and time, fused into a single executable trajectory.
 
 ---
 
-## 👁 The Operator's Promise
+## ⚜ The Verdict
 
-| | |
-| :--- | :--- |
-| **What it is** | A 3D WebGL platform engineered as a cognitive trigger — visual proof that excellence is non-negotiable. |
-| **What it does** | Reprograms the visitor's sense of standard. Every frame at 60fps minimum. Every interaction frictionless. |
-| **What it isn't** | A theme. A template. A WordPress build with extra steps. |
-| **Who it's for** | Operators, founders, traders, and creators who treat their digital surface as a weapon. |
-| **The proof** | The site itself. Open it. Feel it. The argument is the experience. |
+The goals are not aspirations. They are **specifications.**
 
----
+| Specification | Value | Status |
+| :--- | :---: | :--- |
+| **The Floor** | `$100,000,000 USD` | Non-negotiable. The floor — never the ceiling. |
+| **The Hedge** | `5,000 KG of Gold` | Sovereign reserve. Hedge against every fiat collapse. |
+| **The Identity** | `Unstoppable self` | The only acceptable version. All others are interim. |
+| **The Sovereignty** | `Absolute` | Financial · Mental · Temporal · Geographic. |
+| **The Timeline** | `Compressed` | Decades into days. Days into deployed leverage. |
 
-## ⚜ The Aesthetic Doctrine
-
-Two colors. Zero compromise.
-
-| Token | Hex | RGB | Function |
-| :--- | :---: | :---: | :--- |
-| **Void Black** | `#000000` | `0, 0, 0` | The substrate. The infinite. The frame that lets the gold breathe. |
-| **Luxury Gold** | `#D4AF37` | `212, 175, 55` | The signal. The accent. The single permitted indulgence. |
-| **Shadow Gold** | `#8B7028` | `139, 112, 40` | The fade. The recess. The depth carrier. |
-| **Highlight Gold** | `#F4D374` | `244, 211, 116` | The glint. Reserved for hover, focus, and apex moments. |
-| **Off-Black** | `#0A0A0A` | `10, 10, 10` | Surface separation when pure black would lose layer hierarchy. |
-
-### The Three Rules of the Palette
-
-1. **No grays.** Grays are indecision. We use off-black or shadow gold.
-2. **No alternate accents.** Gold is the only signal color. Anything else dilutes the verdict.
-3. **Light is gold. Dark is void. There is no third state.**
-
-### Typography Voice
-
-| Layer | Family | Weight | Purpose |
-| :--- | :--- | :---: | :--- |
-| **Display** | Geometric serif, condensed | 900 | Declarations. Verdicts. Single-word slabs. |
-| **Body** | Geometric sans, mono variant | 400–500 | Mechanical clarity. Operator-grade. |
-| **Numeric** | Tabular monospace | 500 | Metrics, prices, frame counts, timestamps. |
+> A goal without a number is a wish. A number without a system is a slogan. UR LIFE IS UP delivers both, in operating form.
 
 ---
 
-## 🎯 The Render Pipeline
+## 🗝 The Operator's Code
 
-Every frame travels through a five-stage pipeline. **No stage exceeds its declared budget. Ever.**
+Seven non-negotiables. Every movement of this system descends from these.
+
+| # | Code | Translation |
+| :---: | :--- | :--- |
+| **I** | **Identity precedes outcome** | Become the operator first. The wins follow automatically. |
+| **II** | **Asymmetry over effort** | One asymmetric bet beats one thousand symmetric trades. |
+| **III** | **Speed of decision is the alpha** | The market does not reward correctness. It rewards correct decisions made faster. |
+| **IV** | **Risk is the only currency** | Manage downside surgically. Upside takes care of itself. |
+| **V** | **Compounding is sacred** | Never interrupt compounding — of capital, of skill, of identity. |
+| **VI** | **Average is the enemy** | Average inputs produce average outputs. Average is a slow death. |
+| **VII** | **Sovereignty is the destination** | Every action must increase optionality, not consume it. |
+
+---
+
+## 🧬 The Four Movements
+
+The full journey from average to apex. Four movements. No skipping. No shortcuts that aren't already engineered into the system.
 
 ```mermaid
 flowchart LR
-    INPUT[🎮 Input Tick<br/>Pointer · Scroll · Time]
+    M1[I · The Mind<br/>Identity Reprogramming]
+    M2[II · The Action<br/>Superhuman Execution]
+    M3[III · The Capital<br/>Wealth Engineering]
+    M4[IV · The Destination<br/>God-Tier Life]
 
-    subgraph PIPELINE[" "]
-        S1[Stage 1<br/>Scene Update<br/>≤2ms]
-        S2[Stage 2<br/>GLSL Shader Pass<br/>≤6ms]
-        S3[Stage 3<br/>Post-Processing<br/>≤4ms]
-        S4[Stage 4<br/>Composite<br/>≤2ms]
-        S5[Stage 5<br/>Present<br/>≤2.67ms]
-    end
+    M1 --> M2 --> M3 --> M4
 
-    OUTPUT[✨ Frame<br/>Total ≤ 16.67ms<br/>60fps locked]
+    M4 -.->|compounds back into| M1
 
-    INPUT --> S1 --> S2 --> S3 --> S4 --> S5 --> OUTPUT
-
-    style INPUT fill:#000,stroke:#D4AF37,color:#D4AF37,stroke-width:2px
-    style S1 fill:#0A0A0A,stroke:#D4AF37,color:#fff
-    style S2 fill:#0A0A0A,stroke:#D4AF37,color:#fff,stroke-width:2px
-    style S3 fill:#0A0A0A,stroke:#D4AF37,color:#fff
-    style S4 fill:#0A0A0A,stroke:#D4AF37,color:#fff
-    style S5 fill:#0A0A0A,stroke:#D4AF37,color:#fff
-    style OUTPUT fill:#000,stroke:#F4D374,color:#F4D374,stroke-width:3px
+    style M1 fill:#000,stroke:#D4AF37,color:#D4AF37,stroke-width:3px
+    style M2 fill:#000,stroke:#D4AF37,color:#D4AF37,stroke-width:3px
+    style M3 fill:#000,stroke:#D4AF37,color:#D4AF37,stroke-width:3px
+    style M4 fill:#000,stroke:#F4D374,color:#F4D374,stroke-width:3px
 ```
 
-### Stage Detail
-
-| Stage | What Runs | Budget | Failure Behavior |
-| :--- | :--- | :---: | :--- |
-| **1 · Scene Update** | Camera lerp, object transforms, scroll-driven state | 2ms | Skip non-essential transforms |
-| **2 · GLSL Shader Pass** | Custom vertex + fragment shaders, instanced geometry | 6ms | Drop to lower-LOD shader variant |
-| **3 · Post-Processing** | Bloom, chromatic aberration, gold-luma filter | 4ms | Disable post pass entirely |
-| **4 · Composite** | Layer blend, final color grade | 2ms | Hard skip — composite at next vsync |
-| **5 · Present** | Submit to GPU, vsync | 2.67ms | Browser-controlled |
+> The arrow back is not decoration. **Sovereignty re-funds identity.** The system is closed-loop. Every win at Movement IV makes Movement I stronger. This is why it compounds.
 
 ---
 
-## 🎬 The Motion Choreography
+### Ⅰ · THE MIND
+#### *Identity Reprogramming*
 
-Motion is not decoration. **Motion is the operator's heartbeat made visible.**
+> The average mind produces average outcomes by design. Before any tactic, the substrate itself must be rewired.
 
-### The Layered System
+The work of this movement is **destruction before construction**:
 
-| Layer | Library | Responsibility | Easing Default |
-| :--- | :--- | :--- | :--- |
-| **Scroll** | Lenis Smooth Scroll | Inertial scroll, no jank, momentum-preserved | `expo.out` |
-| **Timeline** | GSAP | Sequenced animations, scrubbable, chained | `power3.inOut` |
-| **Trigger** | ScrollTrigger | Bind animations to scroll position with sub-pixel precision | n/a |
-| **Camera** | Three.js + custom lerp | 3D camera path, viewport-aware | `power2.out` |
-| **Shader** | GLSL uniforms | Time-driven shader parameters, additive layer | `linear` (handled in shader) |
+- **Destroy limiting beliefs.** Beliefs inherited from average people produce average results. They are software bugs. Patch them.
+- **Rewire habits for decision speed.** Hesitation is the most expensive habit in capital markets. Strip it.
+- **Forge emotional control.** The market punishes emotion at scale. Emotional control is not suppression — it is **conscious choice of state.**
+- **Install systems thinking.** Stop optimizing single moves. Optimize the system that produces the moves.
+- **Install asymmetric vision.** Train the eye to detect 10× opportunities the average mind walks past every day.
 
-### Choreography Architecture
-
-```mermaid
-flowchart TB
-    SCROLL[🌀 Lenis Scroll Engine] --> POS[Scroll Position State]
-    POS --> ST[ScrollTrigger Bindings]
-
-    ST --> TL1[GSAP Master Timeline]
-
-    TL1 --> CAM[Camera Path<br/>3D dolly + orbit]
-    TL1 --> OBJ[Scene Object Transforms<br/>position · rotation · scale]
-    TL1 --> SHD[Shader Uniforms<br/>time · intensity · warp]
-    TL1 --> UI[UI Layer Reveals<br/>opacity · transform · clip]
-
-    CAM --> R[🎯 Frame Render]
-    OBJ --> R
-    SHD --> R
-    UI --> R
-
-    style SCROLL fill:#000,stroke:#D4AF37,color:#D4AF37,stroke-width:3px
-    style TL1 fill:#0A0A0A,stroke:#F4D374,color:#F4D374,stroke-width:2px
-    style R fill:#000,stroke:#F4D374,color:#F4D374,stroke-width:3px
-```
-
-### Motion Principles
-
-1. **Nothing pops. Everything emerges.** No instant appearances. No hard cuts.
-2. **Easing is the voice.** Default to `expo.out` for entries, `power3.inOut` for sequences, `power2.out` for camera.
-3. **Scroll is sacred.** Every scroll-bound animation is scrubbable in both directions, deterministic, no setTimeout dependencies.
-4. **Time-bound, never event-bound** for the master timeline. Events trigger state transitions, not animations directly.
+**Exit condition:** The operator no longer recognizes their previous self. The old defaults no longer activate. The new identity is the only available state.
 
 ---
 
-## ⏱ The Frame Budget
+### Ⅱ · THE ACTION
+#### *Superhuman Execution*
 
-Hard contract with the GPU. No negotiations.
+> Execution is where 99% of operators die. Not because they don't know — because they don't ship.
 
-| Target | Frame Budget | Allowed Drops/min | Adaptive Action at Breach |
-| :--- | :---: | :---: | :--- |
-| **120fps (high-tier hardware)** | 8.33ms | 0 sustained | Drop to 60fps tier instantly |
-| **60fps (default)** | 16.67ms | < 3 single-frame stutters | Reduce resolution scale by 10% |
-| **45fps (mobile / low-tier)** | 22.22ms | < 5 single-frame stutters | Disable post-processing |
-| **30fps (last resort)** | 33.33ms | n/a | Disable particles + reduce shader complexity |
+The work of this movement is **time compression**:
 
-### Adaptive Resolution Scaling
+- **20-day skill blueprints.** Spaced repetition + Feynman + active recall = top 1% in any high-value skill within twenty days. Not metaphorically. Operationally.
+- **AI as personal multiplier.** Every repetitive cognitive task is delegated to AI. The operator's brain runs only on the work AI cannot do.
+- **Automation everywhere it touches money.** Operations that don't compound get scripted. Operations that compound get protected.
+- **Deep-work blocks.** Minimum 90-minute uninterrupted blocks for the only work that creates asymmetric value. Phone in another room. Notifications off.
+- **The leap, not the climb.** While average operators climb linearly, the operator leaps via AI, leverage, and compounding curves.
 
-The renderer constantly measures frame time. **If the rolling average drifts above budget for more than 1 second, resolution scales down. If it stays comfortably under budget for 5 seconds, resolution scales back up.**
-
-```
-RESOLUTION_SCALE = clamp(
-  baseScale × (targetFrameTime / actualFrameTime),
-  0.50,
-  device.pixelRatio
-)
-```
-
-### Hardware Tier Detection
-
-On first paint, the platform probes:
-
-| Signal | Source | Decision |
-| :--- | :--- | :--- |
-| Logical CPU cores | `navigator.hardwareConcurrency` | < 4 → low tier · 4–8 → mid · > 8 → high |
-| GPU vendor | `WEBGL_debug_renderer_info` | Tier-map known GPU families |
-| Device pixel ratio | `window.devicePixelRatio` | Cap render scale to 2.0 max |
-| Memory hint | `navigator.deviceMemory` | < 4GB → reduce particle count |
-| Touch / pointer | `navigator.maxTouchPoints` | Mobile path → mobile motion profile |
-| Reduced motion | `prefers-reduced-motion` | Strip non-essential motion entirely |
-
-**The site never asks the user to wait. It adapts to their machine.**
+**Exit condition:** The operator ships at a velocity that competitors cannot model. The output ratio is no longer 1:1 — it is 10:1, then 100:1.
 
 ---
 
-## 🛠 The Stack
+### Ⅲ · THE CAPITAL
+#### *Wealth Engineering & Supertrader Mechanics*
 
-| Layer | Technology | Why This, Not That |
-| :--- | :--- | :--- |
-| **3D Engine** | Three.js (r155+) | Mature, performant, full WebGL2 control without rewriting renderer |
-| **Shaders** | Custom GLSL (ES 3.0) | Hand-tuned vertex + fragment pairs. No shader graphs. No abstractions over the metal. |
-| **Motion Engine** | GSAP 3 + ScrollTrigger | The only motion library that survives at 120fps with sub-pixel precision |
-| **Smooth Scroll** | Lenis | Native-feel inertial scroll, RAF-locked, momentum-correct |
-| **Build Tool** | Vite | Sub-second HMR, ESM-native, zero config drama |
-| **Module System** | ESM + dynamic imports | Code-split per scene, lazy-load on scroll proximity |
-| **Asset Pipeline** | Draco (geometry) + KTX2 (textures) + Basis Universal | GPU-native compression, 5–10× smaller than raw |
-| **Hosting** | Edge CDN, HTTP/3 | First byte < 100ms anywhere in the operator's market |
+> Capital is the compressed form of every previous decision. Engineer capital like an architect, not a gambler.
 
-### What's Deliberately Excluded
+The work of this movement is **surgical capital deployment**:
 
-- ❌ React Three Fiber — abstraction tax we don't pay
-- ❌ jQuery — extinct
-- ❌ CSS frameworks — every pixel is custom-authored
-- ❌ Generic page-builder logic — no compromise surface
-- ❌ Analytics that block paint — telemetry is post-load only
+#### Market Mastery
 
----
+- **Analyze global markets with lethal clarity.** Equities, FX, commodities, crypto, private deals — every market is a system with exploitable structure.
+- **Hunt arbitrage gaps.** Mispriced attention, mispriced risk, mispriced time. The gaps are everywhere — only trained eyes see them.
+- **Exploit underpriced attention.** The largest 10× returns of the next decade live in attention that the herd hasn't priced yet.
 
-## 🌌 The Visitor's Arc
+#### Risk Doctrine
 
-The experience is a single arc with five movements. Each movement has a job. **No movement is decoration.**
+> **The doctrine: minimize loss size. Maximize win size. Engineer positive expectancy that compounds infinitely.**
 
-| # | Movement | Visitor Should Feel | Time | Primary Mechanic |
-| :---: | :--- | :--- | :---: | :--- |
-| **I** | **Threshold** | "Something serious is here." | 0–3s | Void open. Gold pinpoint. Silence. |
-| **II** | **Declaration** | "This was made for me." | 3–10s | Master headline. Single shader bloom. |
-| **III** | **Proof** | "This is operating at a different tier." | 10–30s | The 3D centerpiece — full GPU flex. |
-| **IV** | **Direction** | "I know what to do next." | 30–60s | Single CTA. No alternatives. No menu. |
-| **V** | **Closure** | "I'll remember this." | exit | A final gold pulse. Then void. |
+The operator does not chase win rates. The operator chases **expectancy with managed downside.** A 40% win rate with 5R winners eats a 90% win rate with 1R winners alive.
 
-> The arc is engineered. The visitor's emotion is the output. Frame budget is the constraint that makes the output reliable.
+| Principle | Operational Translation |
+| :--- | :--- |
+| **Position sizing first** | Risk per trade is a function of capital, not conviction. Conviction is a bias. |
+| **Asymmetric R-multiples** | Never accept less than 3R potential. Walk away from 1R setups regardless of "feel." |
+| **Stop-loss is sacred** | The stop is set before entry. Never widened. Never rationalized. |
+| **Defense before offense** | A drawdown that takes 50% to recover requires 100% gain. Defense protects the compound. |
+| **Process over outcome** | Outcomes are noisy. Process is signal. Grade the process, not the P&L. |
 
----
+#### Income Engine
 
-## ⚙ Performance Hard Gates
+Multiple uncorrelated income streams, each engineered for compounding:
+- Trading edge (positive expectancy, surgical risk)
+- Productized expertise (skills that pay in sleep)
+- Equity in ventures (asymmetric upside via ownership)
+- Sovereign reserves (gold, hard assets — the hedge against every fiat regime)
 
-Deployment-blocking conditions. **A build that breaches any of these does not ship.**
-
-| Gate | Threshold | Measurement |
-| :--- | :---: | :--- |
-| **First Contentful Paint** | < 1.0s | Lighthouse, throttled 4G |
-| **Largest Contentful Paint** | < 1.8s | Lighthouse, throttled 4G |
-| **Time to Interactive** | < 2.5s | Lighthouse, throttled 4G |
-| **Cumulative Layout Shift** | 0.00 | Strict — no shift permitted |
-| **First Input Delay** | < 50ms | Real-user monitoring |
-| **Sustained FPS (desktop)** | ≥ 60 | 60-second scroll-through |
-| **Sustained FPS (mobile)** | ≥ 45 | 60-second scroll-through |
-| **Memory peak** | < 250MB | DevTools heap snapshot |
-| **GPU peak utilization** | < 80% | Avoid throttle headroom |
-| **Total transferred (initial)** | < 1.2MB | Compressed, code-split |
+**Exit condition:** Capital generates capital. The operator's time is no longer the bottleneck. The compound is autonomous.
 
 ---
 
-## 🧭 Browser & Device Support
+### Ⅳ · THE DESTINATION
+#### *Designing the God-Tier Life*
 
-| Surface | Floor | Tier |
-| :--- | :--- | :--- |
-| **Chrome / Edge** | 110+ | Full experience, 120fps capable |
-| **Safari (desktop)** | 16.4+ | Full experience, 60fps default |
-| **Safari (iOS)** | 16.4+ | Mobile motion profile, adaptive resolution |
-| **Firefox** | 110+ | Full experience, post-FX subset |
-| **Chrome (Android)** | 110+ | Mobile motion profile |
-| **Legacy / unsupported** | — | Graceful fallback: static gold-on-void hero. No degraded experience. |
+> The destination is not luxury. The destination is **sovereignty.**
 
-WebGL2 is mandatory. Devices without WebGL2 receive the static fallback — never a broken render.
+The work of this movement is **architecting the life that the previous three movements unlock**:
 
----
+- **Time freedom** — calendars built around the operator's energy, not external demands.
+- **Geographic freedom** — operate from anywhere. Be unanchored to any single jurisdiction.
+- **Financial freedom** — capital that produces capital. No single income stream is load-bearing.
+- **Cognitive freedom** — attention that the operator owns, not that algorithms harvest.
+- **Identity freedom** — no version of the past self has voting rights in the present.
+- **Empire scaling** — the operator's systems extend beyond themselves. The work outlives the operator.
 
-## 🚀 The Build
-
-```bash
-# Clone
-git clone https://github.com/yasaura/url-life-is-up.git
-cd url-life-is-up
-
-# Install
-pnpm install
-
-# Develop (Vite HMR, sub-second reload)
-pnpm dev
-
-# Build (production, code-split, minified)
-pnpm build
-
-# Preview production locally
-pnpm preview
-
-# Deploy (edge CDN, HTTP/3)
-pnpm deploy
-```
-
-### Environment
-
-| Variable | Required | Purpose |
-| :--- | :---: | :--- |
-| `NODE_VERSION` | ✅ | 20.x LTS minimum |
-| `VITE_ANALYTICS_ENDPOINT` | optional | Post-load telemetry sink |
-| `VITE_ASSET_CDN` | optional | Override default asset CDN |
-
-### Repository Layout
-
-```
-url-life-is-up/
-├── src/
-│   ├── core/              # Renderer, camera, frame loop
-│   ├── shaders/           # GLSL vertex + fragment pairs
-│   ├── scenes/            # Per-movement scene modules
-│   ├── motion/            # GSAP timelines, scroll bindings
-│   ├── adaptive/          # Hardware tier detection, resolution scaling
-│   └── ui/                # Typography layer, CTAs
-├── assets/
-│   ├── geometry/          # Draco-compressed meshes
-│   ├── textures/          # KTX2 / Basis textures
-│   └── fonts/             # Subset, woff2 only
-├── public/
-├── index.html
-├── vite.config.ts
-└── package.json
-```
+**Exit condition:** None. This movement does not exit. It is the steady state. The compounding loop closes here and re-funds Movement I — at a higher altitude.
 
 ---
 
-## 🔐 The Creed
+## ⚔ The Anti-Pattern
 
-> **Every frame is a verdict.**
-> Every easing curve is an act of intention.
-> Every millisecond saved is leverage compounded.
->
-> We do not build websites. We build evidence.
-> Evidence that the operator behind the surface refuses average.
-> Evidence that excellence is not aspiration — it is shipped.
->
-> **Void is the discipline. Gold is the signal. Speed is the proof.**
+The system explicitly rejects:
+
+- ❌ **Hustle theater.** Performative work without compounding output.
+- ❌ **Symmetric bets.** Equal risk for equal reward is a tax on time.
+- ❌ **Win-rate worship.** Win rate without expectancy is amateur theater.
+- ❌ **Information consumption without execution.** Knowledge that doesn't ship is entertainment.
+- ❌ **Identity tourism.** Trying on personas without committing to the substrate change.
+- ❌ **Optionality hoarding.** Holding options is not strategy. Deploying them is.
+- ❌ **Apologizing for ambition.** Ambition does not require permission. It requires execution.
+
+> The shape of the operator is defined as much by what they refuse as by what they pursue.
+
+---
+
+## 🜔 The Origin
+
+The empire's launchpad is **Cairo.**
+
+Not Silicon Valley. Not London. Not Singapore.
+
+**Cairo.**
+
+Where empires have been launched for five thousand years. Where the pyramids were engineered with a precision that modern instruments still struggle to match. Where the timeline is measured in dynasties, not quarters.
+
+The 3D Earth in the substrate spins, focuses, and locks onto a single coordinate. That coordinate is the operator's launchpad — and an unapologetic declaration:
+
+> **The next great empires will rise where the first ones did. We do not borrow other people's geographies. We build from ours.**
+
+---
+
+## 🌌 The Digital Substrate
+
+Philosophy without a substrate is theory. The substrate is the proof.
+
+UR LIFE IS UP is delivered through an **elite, zero-friction 3D WebGL environment** — a cinematic, space-grade interactive journey that the visitor physically traverses. Every scroll, every shader, every easing curve is engineered to anchor the mindset into the nervous system, not just the cortex.
+
+| Property | Implementation |
+| :--- | :--- |
+| **Engine** | Three.js + WebGL2 + custom hand-tuned GLSL shaders |
+| **Motion** | GSAP + ScrollTrigger + Lenis smooth scroll |
+| **Performance** | Hardware-tier detection, dynamic resolution scaling, 60fps floor |
+| **Aesthetic** | Void Black `#000000` × Luxury Gold `#D4AF37` — no third state |
+| **Architecture** | Five-stage render pipeline, frame budget ≤ 16.67ms |
+| **Closure** | The 3D Earth focuses to Cairo, EG — the empire's launchpad |
+
+> Full technical specification in [`ENGINE.md`](./ENGINE.md). The README you are reading is the philosophy. The engine doc is the proof.
+
+---
+
+## 🧭 Who This Is For
+
+| Operator Type | Fit |
+| :--- | :---: |
+| Serious trader engineering positive expectancy | ✅ |
+| Founder compounding identity → capital → empire | ✅ |
+| High-performer rewriting their cognitive defaults | ✅ |
+| Operator using AI as personal multiplier, not toy | ✅ |
+| Anyone treating their digital surface as a weapon | ✅ |
+| Tourist | ❌ |
+| Motivational consumer | ❌ |
+| Anyone seeking permission | ❌ |
 
 ---
 
@@ -366,9 +268,11 @@ url-life-is-up/
 
 | Channel | Purpose |
 | :--- | :--- |
-| `ops@urlifeisup.com` | Commissions and engagements |
+| `ops@urlifeisup.com` | Engagements · serious operators only |
 | `studio@urlifeisup.com` | Studio collaborations |
 | `press@urlifeisup.com` | Media |
+
+> Inquiries that begin with "I'm just curious" will not be returned. Inquiries that begin with a specification will.
 
 ---
 
@@ -376,18 +280,33 @@ url-life-is-up/
 
 Proprietary. © 2026. All rights reserved.
 
-The code, shaders, motion sequences, color tokens, and aesthetic doctrine are protected intellectual property. No reuse, redistribution, derivative work, or training of generative models is permitted without written commercial agreement.
+The philosophy, architecture, blueprints, color tokens, motion sequences, shader pairs, and operating doctrines housed in this repository and its companion engine are protected intellectual property. **No reuse, redistribution, derivative work, or training of generative models is permitted without written commercial agreement.**
 
 ---
 
 <div align="center">
 
-## **UR LIFE IS UP**
+## 🜂 The Creed
 
-### *The void is the discipline. The gold is the signal. The frame is the proof.*
+> **Identity precedes outcome.**
+> **Speed of decision is the alpha.**
+> **Risk is the only currency.**
+> **Compounding is sacred.**
+> **Average is the enemy.**
+> **Sovereignty is the destination.**
+>
+> The work is not to want more.
+> The work is to become the operator for whom more is the inevitable output.
+>
+> **Void is the discipline. Gold is the signal. Cairo is the launchpad.**
+> **And the only acceptable identity is unstoppable.**
 
-**60fps minimum. Zero throttle. Pure dominance.**
+---
 
-[Manifesto](#-the-manifesto) · [Aesthetic](#-the-aesthetic-doctrine) · [Pipeline](#-the-render-pipeline) · [Choreography](#-the-motion-choreography) · [Budget](#-the-frame-budget) · [Stack](#-the-stack) · [Build](#-the-build)
+### **UR LIFE IS UP**
+
+*The operating system of the operator who refuses average.*
+
+[Declaration](#-the-declaration) · [Verdict](#-the-verdict) · [Code](#-the-operators-code) · [Movements](#-the-four-movements) · [Origin](#-the-origin) · [Creed](#-the-creed)
 
 </div>
