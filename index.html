@@ -93,25 +93,52 @@ body{
 
 /* ═══════════════════════════════════════
    CUSTOM CURSOR — DESKTOP ONLY
+   Native cursor is hidden via cursor:none on the page root; the matte gold
+   dot + soft ring are GPU-composited via translate3d (set by src/cursor.js).
+   pointer-events:none !important is critical — the cursor layers MUST NOT
+   intercept button clicks even if some upstream rule tries to enable them.
 ═══════════════════════════════════════ */
 @media(hover:hover) and (pointer:fine){
-  /* cursor:none removed — native cursor restored (HOTFIX-001) */
+  html, body { cursor: none; }
+  /* Keep native I-beam on text-entry fields for accessibility. The custom
+     cursor still renders on top, but if anything goes wrong the user gets
+     the real OS cursor inside the field. */
+  input, textarea, [contenteditable="true"] { cursor: text; }
+
   #cur{
     position:fixed;top:0;left:0;width:14px;height:14px;
-    pointer-events:none;z-index:9999;will-change:transform;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #f4d77a 0%, #d4af37 55%, #8a6b1c 100%);
+    box-shadow:0 0 8px rgba(212,175,55,0.55), 0 0 18px rgba(212,175,55,0.25);
+    pointer-events:none !important;
+    z-index:9999;will-change:transform;
     transform:translate3d(-200vw,0,0);
-    filter:drop-shadow(0 0 4px var(--gold-vivid,#d4af37)) drop-shadow(0 0 8px rgba(212,175,55,0.4));
-    transition:filter 0.25s;
+    transition:width 0.22s ease, height 0.22s ease, box-shadow 0.25s ease;
   }
-  #cur.cursor--hover{filter:drop-shadow(0 0 8px var(--gold-vivid,#d4af37)) drop-shadow(0 0 16px rgba(212,175,55,0.65));}
+  #cur.cursor--hover{
+    width:18px;height:18px;
+    box-shadow:0 0 14px rgba(212,175,55,0.75), 0 0 28px rgba(212,175,55,0.4);
+  }
+  #cur.is-clicking{transform-origin:center;}
   #cur-ring{
-    position:fixed;top:0;left:0;width:28px;height:28px;border-radius:50%;
-    background:radial-gradient(circle,rgba(212,175,55,0.35) 0%,transparent 70%);
-    pointer-events:none;z-index:9998;will-change:transform;opacity:0.35;
+    position:fixed;top:0;left:0;width:34px;height:34px;border-radius:50%;
+    border:1px solid rgba(212,175,55,0.45);
+    background:radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 70%);
+    pointer-events:none !important;
+    z-index:9998;will-change:transform;opacity:0.65;
     transform:translate3d(-200vw,0,0);
+    transition:opacity 0.25s ease, border-color 0.25s ease;
   }
+  #cur-ring.is-hovered{
+    opacity:0.9;
+    border-color:rgba(212,175,55,0.8);
+  }
+  #cur.is-hidden, #cur-ring.is-hidden{opacity:0;}
 }
-@media(hover:none),(pointer:coarse){#cur,#cur-ring{display:none!important;}}
+@media(hover:none),(pointer:coarse){
+  html, body { cursor: auto; }
+  #cur,#cur-ring{display:none!important;}
+}
 @media(prefers-reduced-motion:reduce){#cur-ring{display:none;}#cur{transition:none;}}
 
 /* ═══════════════════════════════════════
@@ -310,28 +337,52 @@ h1.htitle{
   animation:fadeUp .9s .3s ease both;
 }
 .btn-primary{
-  display:inline-block;
-  background:var(--gold);color:var(--bg);
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--gold);color:#0b0b0b;
   font-family:var(--font-body-en);font-size:15px;font-weight:700;
-  padding:16px 42px;border-radius:10px;border:none;
-  letter-spacing:.3px;transition:all .35s;
+  padding:16px 42px;border-radius:10px;border:1px solid var(--gold);
+  letter-spacing:.3px;transition:background .35s, color .35s, transform .35s, box-shadow .35s, border-color .35s;
   position:relative;overflow:hidden;text-decoration:none;
+  isolation:isolate; /* new stacking context — keeps ::after BEHIND the text */
+  cursor:pointer;
 }
 .btn-primary::after{
   content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);
+  background:linear-gradient(135deg,rgba(255,255,255,.18),transparent 60%);
   opacity:0;transition:opacity .3s;
+  pointer-events:none;
+  z-index:-1; /* sits between button background and inline text — never covers it */
 }
-.btn-primary:hover{background:var(--gold2);transform:translateY(-4px);box-shadow:0 24px 60px rgba(200,148,42,.28);}
-.btn-primary:hover::after{opacity:1;}
+/* On hover we deepen the contrast: the text stays #0b0b0b on a matte gold
+   background. No blinding bright-yellow overlay over the text any more. */
+.btn-primary:hover,
+.btn-primary:focus-visible{
+  background:var(--gold2);
+  color:#0b0b0b;
+  border-color:var(--gold2);
+  transform:translateY(-3px);
+  box-shadow:0 18px 44px rgba(212,175,55,.28);
+}
+.btn-primary:hover::after,
+.btn-primary:focus-visible::after{opacity:1;}
+.btn-primary:active{
+  transform:translateY(-1px);
+  background:#b89227; /* deeper matte gold — text remains crisp */
+  color:#0b0b0b;
+  border-color:#b89227;
+}
+.btn-primary:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;}
+
 .btn-outline{
-  display:inline-block;
+  display:inline-flex;align-items:center;justify-content:center;
   background:transparent;color:var(--white);
   font-family:var(--font-body-en);font-size:15px;font-weight:600;
   padding:16px 42px;border-radius:10px;
   border:1px solid rgba(255,255,255,.12);transition:all .3s;text-decoration:none;
+  cursor:pointer;
 }
 .btn-outline:hover{border-color:var(--goldl);color:var(--gold2);}
+.btn-outline:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;}
 
 .hero-stats{
   display:flex;gap:0;margin-top:90px;
@@ -1024,14 +1075,58 @@ html[dir="rtl"] .inv-val{letter-spacing:0;}
   position:relative;max-height:90vh;overflow-y:auto;
 }
 .modal-card--wide{max-width:540px;}
-.modal-close{
-  position:absolute;top:16px;right:20px;
-  background:none;border:none;color:var(--dim);
-  font-size:18px;width:32px;height:32px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:6px;transition:color .2s,background .2s;
+.modal-card--cal{
+  max-width:920px;
+  padding:0;
+  background:linear-gradient(155deg,#0d0d10 0%,#0a0a0c 60%,#080808 100%);
+  border:1px solid rgba(212,175,55,0.28);
+  box-shadow:0 32px 90px rgba(0,0,0,.7), inset 0 1px 0 rgba(212,175,55,.12);
+  overflow:hidden; /* iframe clips to rounded corners */
+  display:flex;flex-direction:column;
 }
-.modal-close:hover{color:var(--white);background:var(--border);}
+.cal-modal-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px 14px;
+  border-bottom:1px solid rgba(212,175,55,.14);
+  background:linear-gradient(180deg,rgba(212,175,55,.06),transparent);
+}
+.cal-modal-title{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--font-en);font-size:16px;font-weight:700;
+  color:var(--gold2);letter-spacing:.3px;
+}
+.cal-modal-title svg{flex-shrink:0;}
+.cal-modal-frame-wrap{
+  position:relative;
+  flex:1;
+  min-height:620px;
+  background:#0a0a0c;
+}
+.cal-modal-frame-wrap iframe{
+  width:100%;height:100%;border:0;display:block;
+  background:transparent;
+  color-scheme:dark;
+}
+.cal-modal-spinner{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  color:var(--gold2);font-family:var(--font-body-en);font-size:13px;
+  letter-spacing:1px;text-transform:uppercase;
+  pointer-events:none;
+  transition:opacity .3s ease;
+}
+.cal-modal-spinner.is-hidden{opacity:0;}
+.cal-modal-spinner::before{
+  content:'';width:14px;height:14px;border-radius:50%;
+  border:2px solid rgba(212,175,55,.25);
+  border-top-color:var(--gold);
+  animation:cal-spin .9s linear infinite;
+}
+@keyframes cal-spin{to{transform:rotate(360deg);}}
+@media (max-width:720px){
+  .modal-card--cal{max-width:100%;border-radius:14px;}
+  .cal-modal-frame-wrap{min-height:75vh;}
+}
 .modal-title{
   font-family:var(--font-en);font-size:24px;font-weight:700;
   color:var(--white);letter-spacing:-1px;margin-bottom:28px;
@@ -1888,7 +1983,6 @@ html {
 }
 
 </style>
-<style>html,body,*{cursor:auto!important;}</style>
 </head>
 <body>
 
@@ -1938,13 +2032,18 @@ html {
   }
 })();
 </script>
-    <a id="nav-join-btn" href="https://cal.eu/ahmed-urlfxup/15min" target="_blank" rel="noopener noreferrer">Join Now</a>
+    <button id="nav-join-btn" type="button" data-en="Join Now" data-ar="انضم الآن">Join Now</button>
     <div id="nav-user-wrap" hidden="">
       <span id="nav-user-name"></span>
-      <button id="nav-settings-btn" class="nav-settings-btn" aria-label="Account Settings"></button>
+      <button id="nav-settings-btn" class="nav-settings-btn" aria-label="Account Settings">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
       <button id="nav-logout-btn">Sign Out</button>
     </div>
-    <button class="nav-cta" data-en="Request a Meeting" data-ar="اطلب اجتماعاً">Request a Meeting</button>
+    <button id="nav-meeting-btn" type="button" class="nav-cta" data-en="Request a Meeting" data-ar="اطلب اجتماعاً">Request a Meeting</button>
   </div>
 </nav>
 
@@ -1974,7 +2073,7 @@ html {
   </p>
 
   <div class="hero-btns">
-    <a id="hero-submit-btn" class="btn-primary" href="https://cal.eu/ahmed-urlfxup/15min" target="_blank" rel="noopener noreferrer" data-en="Submit Your Idea" data-ar="قدّم فكرتك">Submit Your Idea</a>
+    <button id="hero-submit-btn" type="button" class="btn-primary" data-en="Submit Your Idea" data-ar="قدّم فكرتك">Submit Your Idea</button>
     <button class="btn-outline" data-en="Explore the Platform" data-ar="استكشف المنصة">Explore the Platform</button>
   </div>
 
@@ -2337,7 +2436,7 @@ html {
   <p data-en="UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin." data-ar="UrLife ليس فكرة أخرى على قائمتك. إنه المنصة التي تجعل كل فكرة أخرى ممكنة. القرار الوحيد المتبقي هو البدء.">UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin.</p>
   <div class="fcta-btns">
     <button id="cta-submit-btn" class="btn-primary" style="font-size:16px;padding:18px 52px;" data-en="Submit Your Idea Now" data-ar="قدّم فكرتك الآن">Submit Your Idea Now</button>
-    <a id="meeting-cta-btn" class="btn-outline" href="https://cal.eu/ahmed-urlfxup/15min" target="_blank" rel="noopener noreferrer" style="font-size:16px;padding:18px 52px;" data-en="Request a Closed Meeting" data-ar="اطلب اجتماعاً مغلقاً">Request a Closed Meeting</a>
+    <button id="meeting-cta-btn" type="button" class="btn-outline" style="font-size:16px;padding:18px 52px;" data-en="Request a Closed Meeting" data-ar="اطلب اجتماعاً مغلقاً">Request a Closed Meeting</button>
   </div>
 </div>
 
@@ -2355,6 +2454,30 @@ html {
 </footer>
 
 </div><!-- /page-wrap -->
+
+<!-- ══════════ MEETING / CAL.COM EMBED MODAL ══════════ -->
+<div id="cal-modal" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="cal-modal-title">
+  <div class="modal-card modal-card--cal">
+    <div class="cal-modal-head">
+      <div class="cal-modal-title" id="cal-modal-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span data-en="Book a Closed Meeting" data-ar="احجز اجتماعاً مغلقاً">Book a Closed Meeting</span>
+      </div>
+      <button id="cal-modal-close" class="modal-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="cal-modal-frame-wrap">
+      <div id="cal-modal-spinner" class="cal-modal-spinner" aria-hidden="true">
+        <span data-en="Loading calendar…" data-ar="جارٍ تحميل التقويم…">Loading calendar…</span>
+      </div>
+      <iframe id="cal-modal-frame" title="UrLife Calendar Booking"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+              allow="payment; camera; microphone; clipboard-write *; encrypted-media; fullscreen"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+              src="about:blank"></iframe>
+    </div>
+  </div>
+</div>
 
 <!-- ══════════ AUTH MODAL ══════════ -->
 <div id="auth-modal" class="modal-overlay" aria-hidden="true">
