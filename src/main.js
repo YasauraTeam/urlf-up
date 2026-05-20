@@ -113,11 +113,6 @@ function openIdeaModal() {
 }
 
 function wireEvents() {
-  // CAL_LINK CTAs — set href from single source of truth
-  if (navJoinBtn)    navJoinBtn.href    = CAL_LINK;
-  if (heroSubmitBtn) heroSubmitBtn.href = CAL_LINK;
-  if (meetingCtaBtn) meetingCtaBtn.href = CAL_LINK;
-
   navSettingsBtn?.addEventListener("click", () => openSettings());
 
   authTabLogin?.addEventListener("click",    () => switchAuthTab("login"));
@@ -129,11 +124,6 @@ function wireEvents() {
   });
 
   ctaSubmitBtn?.addEventListener("click",  openIdeaModal);
-
-  document.querySelector(".btn-outline")?.addEventListener("click", () => {
-    if (!_session) openAuthModal("login");
-    else openIdeaModal();
-  });
 
   document.querySelector(".nav-cta")?.addEventListener("click", () => {
     if (!_session) openAuthModal("login");
