@@ -95,7 +95,7 @@ body{
    CUSTOM CURSOR — DESKTOP ONLY
 ═══════════════════════════════════════ */
 @media(hover:hover) and (pointer:fine){
-  *,*:hover{cursor:none!important;}
+  /* cursor:none removed — native cursor restored (HOTFIX-001) */
   #cur{
     position:fixed;top:0;left:0;width:14px;height:14px;
     pointer-events:none;z-index:9999;will-change:transform;
@@ -310,11 +310,12 @@ h1.htitle{
   animation:fadeUp .9s .3s ease both;
 }
 .btn-primary{
+  display:inline-block;
   background:var(--gold);color:var(--bg);
   font-family:var(--font-body-en);font-size:15px;font-weight:700;
   padding:16px 42px;border-radius:10px;border:none;
   letter-spacing:.3px;transition:all .35s;
-  position:relative;overflow:hidden;
+  position:relative;overflow:hidden;text-decoration:none;
 }
 .btn-primary::after{
   content:'';position:absolute;inset:0;
@@ -324,10 +325,11 @@ h1.htitle{
 .btn-primary:hover{background:var(--gold2);transform:translateY(-4px);box-shadow:0 24px 60px rgba(200,148,42,.28);}
 .btn-primary:hover::after{opacity:1;}
 .btn-outline{
+  display:inline-block;
   background:transparent;color:var(--white);
   font-family:var(--font-body-en);font-size:15px;font-weight:600;
   padding:16px 42px;border-radius:10px;
-  border:1px solid rgba(255,255,255,.12);transition:all .3s;
+  border:1px solid rgba(255,255,255,.12);transition:all .3s;text-decoration:none;
 }
 .btn-outline:hover{border-color:var(--goldl);color:var(--gold2);}
 
@@ -949,7 +951,7 @@ html[dir="rtl"] .inv-val{letter-spacing:0;}
   .fcta h2{letter-spacing:-2px;}
   .fcta p{font-size:15px;}
   .fcta-btns{flex-direction:column;gap:10px;}
-  .fcta-btns button{width:100%;font-size:15px!important;padding:16px 24px!important;}
+  .fcta-btns button,.fcta-btns a{width:100%;font-size:15px!important;padding:16px 24px!important;}
 
   /* FOOTER */
   footer{padding:40px 20px;}
@@ -981,11 +983,12 @@ html[dir="rtl"] .inv-val{letter-spacing:0;}
    AUTH — NAV ADDITIONS
 ═══════════════════════════════════════ */
 #nav-join-btn{
+  display:inline-block;
   background:transparent;color:var(--gold2);
   font-family:var(--font-body-en);font-size:13px;font-weight:700;
   padding:9px 18px;border-radius:8px;
   border:1px solid var(--goldl);
-  letter-spacing:.5px;transition:all .3s;white-space:nowrap;
+  letter-spacing:.5px;transition:all .3s;white-space:nowrap;text-decoration:none;
 }
 #nav-join-btn:hover{background:var(--goldf);border-color:var(--gold);color:var(--gold);}
 #nav-user-wrap{display:flex;align-items:center;gap:8px;}
@@ -1934,7 +1937,7 @@ html {
   }
 })();
 </script>
-    <button id="nav-join-btn">Join Now</button>
+    <a id="nav-join-btn" href="#" target="_blank" rel="noopener noreferrer">Join Now</a>
     <div id="nav-user-wrap" hidden="">
       <span id="nav-user-name"></span>
       <button id="nav-settings-btn" class="nav-settings-btn" aria-label="Account Settings"></button>
@@ -1970,7 +1973,7 @@ html {
   </p>
 
   <div class="hero-btns">
-    <button id="hero-submit-btn" class="btn-primary" data-en="Submit Your Idea" data-ar="قدّم فكرتك">Submit Your Idea</button>
+    <a id="hero-submit-btn" class="btn-primary" href="#" target="_blank" rel="noopener noreferrer" data-en="Submit Your Idea" data-ar="قدّم فكرتك">Submit Your Idea</a>
     <button class="btn-outline" data-en="Explore the Platform" data-ar="استكشف المنصة">Explore the Platform</button>
   </div>
 
@@ -2333,7 +2336,7 @@ html {
   <p data-en="UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin." data-ar="UrLife ليس فكرة أخرى على قائمتك. إنه المنصة التي تجعل كل فكرة أخرى ممكنة. القرار الوحيد المتبقي هو البدء.">UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin.</p>
   <div class="fcta-btns">
     <button id="cta-submit-btn" class="btn-primary" style="font-size:16px;padding:18px 52px;" data-en="Submit Your Idea Now" data-ar="قدّم فكرتك الآن">Submit Your Idea Now</button>
-    <button class="btn-outline" style="font-size:16px;padding:18px 52px;" data-en="Request a Closed Meeting" data-ar="اطلب اجتماعاً مغلقاً">Request a Closed Meeting</button>
+    <a id="meeting-cta-btn" class="btn-outline" href="#" target="_blank" rel="noopener noreferrer" style="font-size:16px;padding:18px 52px;" data-en="Request a Closed Meeting" data-ar="اطلب اجتماعاً مغلقاً">Request a Closed Meeting</a>
   </div>
 </div>
 

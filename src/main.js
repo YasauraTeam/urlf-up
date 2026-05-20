@@ -1,4 +1,5 @@
 import { pingSupabase } from "./lib/supabase.js";
+import { CAL_LINK } from "./lib/config.js";
 import {
   initAuth,
   teardownAuth,
@@ -25,7 +26,7 @@ let _ideasLoaded = false;
 let navJoinBtn, navUserWrap, navUserName, navLogoutBtn, navSettingsBtn;
 let authTabLogin, authTabRegister, authPanelLogin, authPanelRegister;
 let loginForm, registerForm, registerConfirmMsg;
-let ideaRoleGate, ideaFormWrap, heroSubmitBtn, ctaSubmitBtn;
+let ideaRoleGate, ideaFormWrap, heroSubmitBtn, ctaSubmitBtn, meetingCtaBtn;
 
 function resolveRefs() {
   navJoinBtn     = document.getElementById("nav-join-btn");
@@ -46,6 +47,7 @@ function resolveRefs() {
   ideaFormWrap  = document.getElementById("idea-form-wrap");
   heroSubmitBtn = document.getElementById("hero-submit-btn");
   ctaSubmitBtn  = document.getElementById("cta-submit-btn");
+  meetingCtaBtn = document.getElementById("meeting-cta-btn");
 }
 
 function updateUI(session) {
@@ -111,7 +113,11 @@ function openIdeaModal() {
 }
 
 function wireEvents() {
-  navJoinBtn?.addEventListener("click",  () => openAuthModal("login"));
+  // CAL_LINK CTAs — set href from single source of truth
+  if (navJoinBtn)    navJoinBtn.href    = CAL_LINK;
+  if (heroSubmitBtn) heroSubmitBtn.href = CAL_LINK;
+  if (meetingCtaBtn) meetingCtaBtn.href = CAL_LINK;
+
   navSettingsBtn?.addEventListener("click", () => openSettings());
 
   authTabLogin?.addEventListener("click",    () => switchAuthTab("login"));
@@ -122,7 +128,6 @@ function wireEvents() {
     showToast("Signed out successfully.", "info");
   });
 
-  heroSubmitBtn?.addEventListener("click", openIdeaModal);
   ctaSubmitBtn?.addEventListener("click",  openIdeaModal);
 
   document.querySelector(".btn-outline")?.addEventListener("click", () => {
