@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.DS_Store
+
+# Environment — never commit real credentials
+.env
+.env.local
+.env.*.local
+
+# iOS
+ios/App/Pods/
+ios/App/App/public/
+
+# Android
+android/app/src/main/assets/public/
+android/.gradle/
+android/app/build/

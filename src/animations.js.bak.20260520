@@ -1,0 +1,117 @@
+import { resizeCanvas, stopLoop, startLoop } from './render.js';
+
+const _registry = [];
+
+function on(target, type, handler, options = {}) {
+  target.addEventListener(type, handler, options);
+  _registry.push({ target, type, handler });
+}
+
+export function teardownAnimations() {
+  _registry.forEach(({ target, type, handler }) =>
+    target.removeEventListener(type, handler));
+  _registry.length = 0;
+}
+
+export function initAnimations() {
+  let _resizeRaf = false;
+  on(window, 'resize', () => {
+    if (_resizeRaf) return;
+    _resizeRaf = true;
+    requestAnimationFrame(() => {
+      resizeCanvas();
+      _resizeRaf = false;
+    });
+  }, { passive: true });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(el => obs.observe(el));
+
+  const nav = document.querySelector('nav');
+  if (nav) {
+    let _scrollRaf = false;
+    on(window, 'scroll', () => {
+      if (_scrollRaf) return;
+      _scrollRaf = true;
+      requestAnimationFrame(() => {
+        nav.style.padding = window.scrollY > 60 ? '12px 56px' : '18px 56px';
+        _scrollRaf = false;
+      });
+    }, { passive: true });
+  }
+
+  document.querySelectorAll('.role-card, .ps, .rev-card').forEach(card => {
+    let _tiltRaf = false;
+    on(card, 'mousemove', (e) => {
+      if (_tiltRaf) return;
+      _tiltRaf = true;
+      requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect(); 
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(800px) rotateY(${x * 12}deg) rotateX(${-y * 12}deg) translateY(-8px)`;
+        _tiltRaf = false;
+      });
+    }, { passive: true });
+    
+    on(card, 'mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    on(a, 'click', (e) => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  let isAR = false;
+  window.toggleLang = function toggleLang() {
+    isAR = !isAR;
+    const html = document.getElementById('html-root');
+    const btn = document.getElementById('langToggle');
+
+    if (isAR) {
+      html.setAttribute('lang', 'ar');
+      html.setAttribute('dir', 'rtl');
+      if (btn) btn.textContent = '🌐 English';
+      document.title = 'UrLife — حيث تلتقي العقول';
+    } else {
+      html.setAttribute('lang', 'en');
+      html.setAttribute('dir', 'ltr');
+      if (btn) btn.textContent = '🌐 العربية';
+      document.title = 'UrLife — Where Minds Meet';
+    }
+
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+      const txt = isAR ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+      if (txt) {
+        el.innerHTML = txt;
+      }
+    });
+
+    const headingFont = isAR ? 'var(--font-ar)' : 'var(--font-en)';
+    document.querySelectorAll('h1,h2,h3,h4,.nav-logo,.f-logo').forEach(el => {
+      el.style.fontFamily = headingFont;
+    });
+
+    const pageWrap = document.querySelector('.page-wrap');
+    if (pageWrap) {
+      pageWrap.style.opacity = '0';
+      pageWrap.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        pageWrap.style.transition = 'opacity .4s ease, transform .4s ease';
+        pageWrap.style.opacity = '1';
+        pageWrap.style.transform = 'translateY(0)';
+      }, 50);
+    }
+  }
+}
