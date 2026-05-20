@@ -91,14 +91,31 @@ function switchAuthTab(tab) {
   clearError("register-error");
 }
 
+// Force-visible/hidden helpers — set inline opacity/visibility so the modal is
+// deterministically visible regardless of CSS transition state or competing
+// selectors. Pairs with closeOverlay() below.
+function _openOverlay(target) {
+  if (!target) return;
+  target.classList.add("modal--open");
+  target.setAttribute("aria-hidden", "false");
+  target.style.opacity = "1";
+  target.style.visibility = "visible";
+  target.style.pointerEvents = "auto";
+  document.body.style.overflow = "hidden";
+}
+function _closeOverlay(target) {
+  if (!target) return;
+  target.classList.remove("modal--open");
+  target.setAttribute("aria-hidden", "true");
+  target.style.opacity = "";
+  target.style.visibility = "";
+  target.style.pointerEvents = "";
+  document.body.style.overflow = "";
+}
+
 function openAuthModal(defaultTab = "login") {
   switchAuthTab(defaultTab);
-  const target = document.getElementById("auth-modal");
-  if (target) {
-    target.classList.add("modal--open");
-    target.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
+  _openOverlay(document.getElementById("auth-modal"));
 }
 
 function openIdeaModal() {
@@ -111,12 +128,7 @@ function openIdeaModal() {
   if (ideaRoleGate) ideaRoleGate.hidden = isVisionary;
   if (ideaFormWrap) ideaFormWrap.hidden = !isVisionary;
   clearError("idea-error");
-  const target = document.getElementById("idea-modal");
-  if (target) {
-    target.classList.add("modal--open");
-    target.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  }
+  _openOverlay(document.getElementById("idea-modal"));
 }
 
 // ── Cal embed modal ───────────────────────────────────────────────────────
@@ -150,16 +162,10 @@ function openCalModal() {
   } else if (spinner) {
     spinner.classList.add("is-hidden");
   }
-  target.classList.add("modal--open");
-  target.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  _openOverlay(target);
 }
 function closeCalModal() {
-  const target = document.getElementById("cal-modal");
-  if (!target) return;
-  target.classList.remove("modal--open");
-  target.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
+  _closeOverlay(document.getElementById("cal-modal"));
 }
 
 // Generic close-on-backdrop / ESC handler — covers cal, auth, idea modals.
@@ -170,18 +176,12 @@ function bindGenericModalClosers() {
   document.addEventListener("click", (e) => {
     const overlay = e.target.closest(".modal-overlay");
     if (overlay && e.target === overlay && overlay.classList.contains("modal--open")) {
-      overlay.classList.remove("modal--open");
-      overlay.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+      _closeOverlay(overlay);
     }
   });
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") return;
-    document.querySelectorAll(".modal-overlay.modal--open").forEach((m) => {
-      m.classList.remove("modal--open");
-      m.setAttribute("aria-hidden", "true");
-    });
-    document.body.style.overflow = "";
+    document.querySelectorAll(".modal-overlay.modal--open").forEach(_closeOverlay);
   });
 }
 
@@ -197,33 +197,38 @@ function wireEvents() {
   });
 
   // ── PRIMARY WORKFLOWS ────────────────────────────────────────────────────
-  // Submit Your Idea (hero CTA + final CTA) → idea modal (opens auth if needed)
-  heroSubmitBtn?.addEventListener("click", openIdeaModal);
-  ctaSubmitBtn?.addEventListener("click",  openIdeaModal);
-
-  // Join Now (nav) → auth modal on Register tab
-  navJoinBtn?.addEventListener("click", () => openAuthModal("register"));
-
-  // Request a Meeting (nav CTA) + Request a Closed Meeting (final CTA)
-  //   → embedded Cal.com modal (no external redirect)
-  navMeetingBtn?.addEventListener("click", openCalModal);
-  meetingCtaBtn?.addEventListener("click", openCalModal);
-
-  // Explicit modal close buttons
-  calModalCloseBtn?.addEventListener("click", closeCalModal);
-  authModalCloseBtn?.addEventListener("click", () => {
-    const m = document.getElementById("auth-modal");
-    if (!m) return;
-    m.classList.remove("modal--open");
-    m.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+  // Single delegated handler — survives DOM replacement, races with module
+  // load order, and any case where resolveRefs() ran before a button existed.
+  // Each CTA is matched by its #id via closest(), so a click anywhere inside
+  // the button (icon, span, text node) still resolves to the right action.
+  const CTA_HANDLERS = {
+    "hero-submit-btn": openIdeaModal,
+    "cta-submit-btn":  openIdeaModal,
+    "nav-join-btn":    () => openAuthModal("register"),
+    "nav-meeting-btn": openCalModal,
+    "meeting-cta-btn": openCalModal,
+    "cal-modal-close":  closeCalModal,
+    "auth-modal-close": () => _closeOverlay(document.getElementById("auth-modal")),
+    "idea-modal-close": () => _closeOverlay(document.getElementById("idea-modal")),
+  };
+  document.addEventListener("click", (e) => {
+    const hit = e.target.closest(
+      "#hero-submit-btn, #cta-submit-btn, #nav-join-btn, " +
+      "#nav-meeting-btn, #meeting-cta-btn, " +
+      "#cal-modal-close, #auth-modal-close, #idea-modal-close"
+    );
+    if (!hit) return;
+    const fn = CTA_HANDLERS[hit.id];
+    if (!fn) return;
+    e.preventDefault();
+    fn(e);
   });
-  ideaModalCloseBtn?.addEventListener("click", () => {
-    const m = document.getElementById("idea-modal");
-    if (!m) return;
-    m.classList.remove("modal--open");
-    m.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
+
+  // Mark CTAs as "owned" so core.js's capture-phase orphan handler stops
+  // calling preventDefault() on them (it inspects data-initialized).
+  Object.keys(CTA_HANDLERS).forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) el.dataset.initialized = "true";
   });
 
   // Generic ESC + backdrop closer covers all .modal-overlay instances
@@ -235,12 +240,7 @@ function wireEvents() {
     const email    = document.getElementById("login-email")?.value    ?? "";
     const password = document.getElementById("login-password")?.value ?? "";
     handleSignIn(email, password, () => {
-      const modal = document.getElementById("auth-modal");
-      if (modal) {
-        modal.classList.remove("modal--open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
+      _closeOverlay(document.getElementById("auth-modal"));
       showToast("Welcome back!");
     });
   });
@@ -249,12 +249,7 @@ function wireEvents() {
     e.preventDefault();
     const email = document.getElementById("login-email")?.value ?? "";
     handleMagicLinkSignIn(email, () => {
-      const modal = document.getElementById("auth-modal");
-      if (modal) {
-        modal.classList.remove("modal--open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
+      _closeOverlay(document.getElementById("auth-modal"));
       showToast("Magic link sent! Check your inbox.");
     });
   });
@@ -291,12 +286,7 @@ function wireEvents() {
   document.getElementById("idea-form")?.addEventListener("submit", (e) => {
     e.preventDefault();
     if (!_session) {
-      const modal = document.getElementById("idea-modal");
-      if (modal) {
-        modal.classList.remove("modal--open");
-        modal.setAttribute("aria-hidden", "true");
-        document.body.style.overflow = "";
-      }
+      _closeOverlay(document.getElementById("idea-modal"));
       openAuthModal();
       return;
     }
