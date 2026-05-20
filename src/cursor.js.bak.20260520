@@ -1,0 +1,94 @@
+// ── cursor.js ─────────────────────────────────────────────
+// Depends on: #cur and #cur-ring existing in index.html <body>
+// Called from: main.js Phase 5 boot sequence (initCursor())
+
+const HOVER_SELECTORS = 'a, button, [data-cursor-hover], label, [role="button"]';
+
+export function initCursor() {
+  const cur     = document.getElementById('cur');
+  const curRing = document.getElementById('cur-ring');
+
+  // ── DOM Guard ──────────────────────────────────────────
+  if (!cur || !curRing) {
+    console.warn(
+      '[cursor.js] #cur or #cur-ring not found in DOM.\n' +
+      'Ensure both elements are the first children of <body> in index.html.\n' +
+      'Cursor disabled — all other modules unaffected.'
+    );
+    return; // graceful exit — no throw, no cascade failure
+  }
+
+  let mouseX = 0, mouseY = 0;
+  let ringX  = 0, ringY  = 0;
+  let rafId  = null;
+
+  // ── Position Tracking ─────────────────────────────────
+  // rAF-throttled mousemove — zero jank
+  let _throttle = false;
+  document.addEventListener('mousemove', (e) => {
+    if (_throttle) return;
+    _throttle = true;
+    requestAnimationFrame(() => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      _throttle = false;
+    });
+  });
+
+  // ── Dot: snaps instantly ───────────────────────────────
+  // ── Ring: lerps with spring feel ──────────────────────
+  const LERP = 0.12;   // adjust 0.08–0.18 for feel
+
+  function loop() {
+    rafId = requestAnimationFrame(loop);
+
+    // Snap dot directly to pointer
+    cur.style.transform = `translate(calc(-50% + ${mouseX}px), calc(-50% + ${mouseY}px))`;
+
+    // Lerp ring toward pointer
+    ringX += (mouseX - ringX) * LERP;
+    ringY += (mouseY - ringY) * LERP;
+    curRing.style.transform =
+      `translate(calc(-50% + ${Math.round(ringX)}px), calc(-50% + ${Math.round(ringY)}px))`;
+  }
+
+  loop();
+
+  // ── Click State ────────────────────────────────────────
+  document.addEventListener('mousedown', () => cur.classList.add('is-clicking'));
+  document.addEventListener('mouseup',   () => cur.classList.remove('is-clicking'));
+
+  // ── Hover Expansion ────────────────────────────────────
+  // Delegated — handles elements added to DOM after init
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(HOVER_SELECTORS)) {
+      curRing.classList.add('is-hovered');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(HOVER_SELECTORS)) {
+      curRing.classList.remove('is-hovered');
+    }
+  });
+
+  // ── Viewport Enter/Leave ───────────────────────────────
+  document.addEventListener('mouseleave', () => {
+    cur.classList.add('is-hidden');
+    curRing.classList.add('is-hidden');
+  });
+  document.addEventListener('mouseenter', () => {
+    cur.classList.remove('is-hidden');
+    curRing.classList.remove('is-hidden');
+  });
+
+  // ── Cleanup export (for SPA route changes or teardown) ─
+  return function destroyCursor() {
+    cancelAnimationFrame(rafId);
+    cur.classList.remove('is-clicking', 'is-hovered', 'is-hidden');
+    curRing.classList.remove('is-hovered', 'is-hidden');
+  };
+}
+
+// ── Dummy exports for backward compatibility ──
+export function promoteCursorTo() {}
+export function restoreCursorRoot() {}

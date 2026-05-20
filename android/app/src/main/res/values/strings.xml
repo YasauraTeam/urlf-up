@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">UrLife</string>
+    <string name="title_activity_main">UrLife</string>
+    <string name="package_name">com.urlife.app</string>
+    <string name="custom_url_scheme">com.urlife.app</string>
+</resources>

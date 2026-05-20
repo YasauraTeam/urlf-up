@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="html-root"><head>
-  <script type="module" src="/@vite/client"></script>
-
+<html lang="en" dir="ltr" id="html-root">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>UrLife — Where Minds Meet</title>
@@ -12,63 +11,33 @@
 <meta name="theme-color" content="#0B0B0B">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co; img-src 'self' data: https:; frame-ancestors 'none';">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="modulepreload" href="/src/core.js">
-<link rel="modulepreload" href="/src/icons.js">
-<link rel="modulepreload" href="/src/cursor.js">
-<link rel="modulepreload" href="/src/scroll-engine.js">
-<link rel="modulepreload" href="/src/settings.js">
-<link rel="modulepreload" href="/src/avatar.js">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════
    TOKENS & RESET
 ═══════════════════════════════════════ */
 :root {
-  --obsidian: #0B0B0B !important;
-  --obsidian-matte: #141414 !important;
-  --obsidian-deeper: #050505;
-  --gold: #D4AF37 !important;
-  --gold-bright: #F4D77A !important;
-  --gold-soft: #B8941F !important;
-  --gold-vivid: #d4af37;
-  --fire: #FF1E00 !important;
-  --fire-deep: #C41600 !important;
-  --fire-glow: rgba(255,30,0,0.2);
-  --ice: #F5F5F5 !important;
-  --ice-dim: rgba(245, 245, 245, 0.62) !important;
-  --ice-white: #f5f5f5;
-  color-scheme: dark only;
-  accent-color: var(--gold);
-  --bg: var(--obsidian,#0b0b0b);
-  --bg2: var(--obsidian-deeper,#050505);
-  --surface: var(--obsidian-matte,#141414);
-  --lift: #0f0f0f;
-  --card: rgba(255,255,255,.038);
-  --white: var(--ice-white,#f5f5f5);
-  --dim: rgba(245,245,245,0.45);
-  --border: rgba(255,255,255,.07);
-  --gold2: #d0ba86;
-  --goldf: rgba(212,175,55,0.10);
-  --goldl: rgba(212,175,55,0.18);
-  --sky: var(--gold-vivid,#d4af37);
-  --ember: #ff3820;
-  --emberf: rgba(255,56,32,.1);
-  --mint: #e5590e;
+  --bg:       #0b0b0b;
+  --bg2:      #050505;
+  --surface:  #141414;
+  --lift:     #0f0f0f;
+  --card:     rgba(255,255,255,.038);
+  --gold:     #a86b2e;
+  --gold2:    #d0ba86;
+  --goldf:    rgba(212,175,55,0.10);
+  --goldl:    rgba(212,175,55,0.18);
+  --ember:    #ff3820;
+  --emberf:   rgba(255,56,32,.1);
+  --sky:      #d4af37;
+  --mint:     #e5590e;
+  --white:    #f5f5f5;
+  --dim:      rgba(245,245,245,0.45);
+  --border:   rgba(255,255,255,.07);
   --r:8px; --r2:16px; --r3:24px;
-  --font-en: 'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', system-ui, sans-serif;
-  --font-body-en: 'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', system-ui, sans-serif;
-  --font-ar: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Tajawal', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
-  --fs-hero: clamp(2.75rem,5.5vw,4.5rem);
-  --fs-h1: clamp(2rem,3.5vw,2.75rem);
-  --fs-h2: clamp(1.5rem,2.5vw,2rem);
-  --fs-h3: 1.25rem;
-  --fs-body: 1rem;
-  --fs-small: 0.8125rem;
-  --fs-micro: 0.6875rem;
-  --lh-tight: 1.1; --lh-snug: 1.35; --lh-relaxed: 1.65;
-  --tracking-hero: -0.025em; --tracking-body: -0.005em; --tracking-eyebrow: 0.18em;
+  --font-en:  'Clash Display', sans-serif;
+  --font-body-en: 'Satoshi', sans-serif;
+  --font-ar:  'Cairo', sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html{scroll-behavior:smooth;font-size:16px;}
@@ -95,7 +64,8 @@ body{
    CUSTOM CURSOR — DESKTOP ONLY
 ═══════════════════════════════════════ */
 @media(hover:hover) and (pointer:fine){
-  *,*:hover{cursor:none!important;}
+  *{cursor:auto!important;}
+  a,button,[role="button"]{cursor:pointer!important;}
   #cur{
     position:fixed;top:0;left:0;width:14px;height:14px;
     pointer-events:none;z-index:9999;will-change:transform;
@@ -1184,7 +1154,14 @@ html[dir="rtl"] .inv-val{letter-spacing:0;}
 }
 
 /* ═══ NEXUS DASHBOARD VARS ════════════════════════════════════════════════ */
-/* vars merged into primary :root above */
+:root {
+  --obsidian:       #0b0b0b;
+  --obsidian-matte: #141414;
+  --gold-vivid:     #d4af37;
+  --fire:           #ff1e00;
+  --fire-glow:      rgba(255,30,0,0.2);
+  --ice-white:      #f5f5f5;
+}
 
 /* ═══ NEXUS DASHBOARD ═════════════════════════════════════════════════════ */
 
@@ -1455,7 +1432,27 @@ html[dir="rtl"] .inv-val{letter-spacing:0;}
 }
 
 /* ═══ LUXURY ASCENSION — font tokens + typographic scale ═══ */
-/* vars merged into primary :root above */
+:root {
+  --font-en:       'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-body-en:  'Inter', 'SF Pro Display', -apple-system, 'Segoe UI', system-ui, sans-serif;
+  --font-ar:       'IBM Plex Sans Arabic', 'Noto Sans Arabic', 'Tajawal', system-ui, sans-serif;
+  --font-mono:     'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  --fs-hero: clamp(2.75rem,5.5vw,4.5rem);
+  --fs-h1:   clamp(2rem,3.5vw,2.75rem);
+  --fs-h2:   clamp(1.5rem,2.5vw,2rem);
+  --fs-h3:   1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.8125rem;
+  --fs-micro: 0.6875rem;
+  --lh-tight: 1.1; --lh-snug: 1.35; --lh-relaxed: 1.65;
+  --tracking-hero: -0.025em; --tracking-body: -0.005em; --tracking-eyebrow: 0.18em;
+  --obsidian:       #0b0b0b;
+  --obsidian-matte: #141414;
+  --gold-vivid:     #d4af37;
+  --fire:           #ff1e00;
+  --fire-glow:      rgba(255,30,0,0.2);
+  --ice-white:      #f5f5f5;
+}
 h1,h2,h3,h4{font-weight:600;letter-spacing:var(--tracking-hero);font-optical-sizing:auto;}
 body{letter-spacing:var(--tracking-body);}
 .sec-chip,.eyebrow-label{text-transform:uppercase;letter-spacing:var(--tracking-eyebrow);font-size:var(--fs-micro);}
@@ -1567,8 +1564,8 @@ dialog.glass-modal.glass-modal--closing{opacity:0;}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.3);color:var(--white,#f5f5f5);}
 .settings-actions{display:flex;gap:10px;justify-content:flex-end;margin-block-start:24px;}
 
-/* ═══ OBSIDIAN POLISH — system defaults override + color purge ═══ */
-html{color-scheme:dark only;accent-color:var(--gold-vivid,#d4af37);scrollbar-color:var(--gold-vivid,#d4af37) var(--obsidian,#0b0b0b);}
+/* ═══ OBSIDIAN POLISH — system defaults override + blue purge ═══ */
+html{color-scheme:dark;accent-color:var(--gold-vivid,#d4af37);scrollbar-color:var(--gold-vivid,#d4af37) var(--obsidian,#0b0b0b);}
 ::selection{background:var(--gold-vivid,#d4af37);color:var(--obsidian,#0b0b0b);}
 :focus-visible{outline:2px solid var(--gold-vivid,#d4af37);outline-offset:2px;}
 input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,
@@ -1582,8 +1579,20 @@ textarea:-webkit-autofill,select:-webkit-autofill{
 ::-webkit-scrollbar-track{background:var(--obsidian,#0b0b0b);}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-soft,#b8941f),var(--gold-vivid,#d4af37));border-radius:4px;}
 a,a:visited{color:var(--gold-vivid,#d4af37);}
-/* Token cascade: remap surface + accent tokens to obsidian/gold */
-/* vars merged into primary :root above */
+/* Token cascade: remap navy bg + blue accent tokens to obsidian/gold */
+:root{
+  --bg:      var(--obsidian,#0b0b0b);
+  --bg2:     var(--obsidian-deeper,#050505);
+  --surface: var(--obsidian-matte,#141414);
+  --white:   var(--ice-white,#f5f5f5);
+  --sky:     var(--gold-vivid,#d4af37);
+  --dim:     rgba(245,245,245,0.45);
+  --obsidian-deeper: #050505;
+  --gold-bright:     #F4D77A;
+  --gold-soft:       #B8941F;
+  --fire-deep:       #C41600;
+  --ice-dim:         rgba(245,245,245,0.62);
+}
 /* will-change — surgical (animated nodes only) */
 #cur,#cur-ring,.glass-modal,.match-card,.toast{will-change:transform;}
 /* Avatar zone */
@@ -1615,275 +1624,6 @@ a,a:visited{color:var(--gold-vivid,#d4af37);}
 }
 .bio-field textarea:focus{border-color:rgba(212,175,55,0.5);outline:none;}
 .char-counter{font-size:10px;color:var(--ice-dim,rgba(245,245,245,0.62));margin-block-start:4px;display:block;}
-
-html, body {
-  background-color : var(--obsidian) !important;
-  color            : var(--ice) !important;
-}
-
-/* ── Lang Toggle — Luxury Obsidian/Gold Edition ──────────────────────── */
-.lang-toggles {
-  display          : flex;
-  align-items      : center;
-  gap              : 2px;
-  background       : oklch(1 0 0 / 0.06);
-  padding          : 3px;
-  border-radius    : 6px;
-  border           : 1px solid oklch(1 0 0 / 0.10);
-}
-.lang-btn {
-  background       : transparent;
-  border           : none;
-  color            : oklch(1 0 0 / 0.50);
-  font-size        : 11px;
-  font-weight      : 600;
-  letter-spacing   : 0.08em;
-  text-transform   : uppercase;
-  padding          : 4px 10px;
-  border-radius    : 4px;
-  cursor           : pointer;
-  transition       : background 150ms ease, color 150ms ease;
-  -webkit-font-smoothing: antialiased;
-}
-.lang-btn:hover {
-  background       : oklch(1 0 0 / 0.09);
-  color            : var(--ice, #F5F5F5);
-}
-.lang-btn:focus-visible {
-  outline          : 2px solid var(--gold, #D4AF37);
-  outline-offset   : 2px;
-}
-.lang-btn--active,
-.lang-btn[aria-pressed="true"] {
-  background       : var(--gold, #D4AF37);
-  color            : var(--obsidian, #0B0B0B);
-  font-weight      : 700;
-}
-.lang-btn--active:hover,
-.lang-btn[aria-pressed="true"]:hover {
-  background       : #c9a227;
-  color            : var(--obsidian, #0B0B0B);
-}
-
-
-/* ── Footer Brand Statement ──────────────────────────────────────────── */
-footer .footer-brand,
-footer > p,
-.footer > p,
-footer .footer-tagline,
-footer .copyright,
-footer small {
-  font-size       : clamp(0.6875rem, 0.65rem + 0.2vw, 0.8125rem);
-  letter-spacing  : 0.13em;
-  text-transform  : uppercase;
-  color           : oklch(1 0 0 / 0.32);
-  font-weight     : 500;
-  margin          : 0;
-}
-
-/* ── OBSIDIAN OVERRIDE — STRUCTURAL SURFACES ── */
-html,
-body,
-.app, #app,
-#root,
-.wrapper, .container, .layout,
-main, nav, header, footer, aside, section,
-.hero, .dashboard, .nexus-dashboard, #nexus-dashboard,
-.panel, .card, .surface {
-  background-color: var(--obsidian) !important;
-  color: var(--ice) !important;
-}
-
-/* Kill OS-native color defaults */
-html { color-scheme: dark only; }
-::selection { background: var(--gold); color: var(--obsidian); }
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-a, a:visited { color: var(--gold); }
-
-/* Webkit autofill — override OS autofill color injection */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px var(--obsidian-matte) inset !important;
-  -webkit-text-fill-color: var(--ice) !important;
-  caret-color: var(--gold) !important;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-/* Scrollbar */
-html { scrollbar-color: var(--gold) var(--obsidian); }
-::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: var(--obsidian); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--gold-soft), var(--gold));
-  border-radius: 4px;
-}
-
-/* ── TACTILE FEEDBACK ENGINE ── */
-button, a, .btn, .lang-btn,
-[role='button'], [data-action], input[type='submit'],
-input[type='button'], .clickable {
-  transition:
-    transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1),
-    filter   0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    background-color 0.18s ease-out !important;
-  transform-origin: center center;
-  will-change: transform, filter;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Press state — the 'tactile click' */
-button:active, a:active, .btn:active, .lang-btn:active,
-[role='button']:active, [data-action]:active,
-input[type='submit']:active, input[type='button']:active,
-.clickable:active {
-  transform: scale(0.95) !important;
-  filter: brightness(1.25) !important;
-  transition-duration: 0.05s !important;
-}
-
-/* Hover state — the 'lift' */
-@media (hover: hover) and (pointer: fine) {
-  button:hover, a:hover, .btn:hover, .lang-btn:hover,
-  [role='button']:hover, [data-action]:hover,
-  input[type='submit']:hover, input[type='button']:hover,
-  .clickable:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.08);
-  }
-}
-
-/* Focus-visible — keyboard accessibility, gold ring */
-button:focus-visible, a:focus-visible, .btn:focus-visible,
-.lang-btn:focus-visible, [role='button']:focus-visible,
-[data-action]:focus-visible {
-  outline: 2px solid var(--gold) !important;
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.18) !important;
-}
-
-/* Disabled state — no feedback, no false promises */
-button:disabled, .btn:disabled, [aria-disabled='true'] {
-  transform: none !important;
-  filter: grayscale(0.4) brightness(0.6) !important;
-  cursor: not-allowed !important;
-  pointer-events: none;
-}
-
-/* Action-pending state — gold ring pulse (set via JS) */
-[data-action-pending='true'] {
-  outline: 2px solid var(--gold) !important;
-  outline-offset: 1px !important;
-  animation: yas-pulse 0.45s cubic-bezier(0.4, 0, 0.2, 1) 1;
-}
-@keyframes yas-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55); }
-  100% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
-}
-
-/* Accessibility — respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  button, a, .btn, .lang-btn,
-  [role='button'], [data-action], .clickable {
-    transition: none !important;
-  }
-  button:active, a:active, .btn:active, .lang-btn:active {
-    transform: none !important;
-    filter: brightness(1.2) !important;
-  }
-  [data-action-pending='true'] { animation: none !important; }
-}
-
-/* ── 3D SCROLL ENGINE × MOTION SYSTEM ── */
-html {
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  perspective-origin: 50% 30%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-
-/* Base reveal state — pushed back & tilted forward */
-.reveal-3d {
-  opacity: 0;
-  transform:
-    perspective(1200px)
-    translate3d(0, 48px, -80px)
-    rotateX(-9deg);
-  transition:
-    opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-/* Revealed state — snapped to physical position */
-.reveal-3d.is-revealed {
-  opacity: 1;
-  transform:
-    perspective(1200px)
-    translate3d(0, 0, 0)
-    rotateX(0deg);
-}
-
-/* Variant: slide from left */
-.reveal-3d[data-reveal='left'] {
-  transform: perspective(1200px) translate3d(-60px, 0, -40px) rotateY(8deg);
-}
-.reveal-3d[data-reveal='left'].is-revealed {
-  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0);
-}
-
-/* Variant: slide from right */
-.reveal-3d[data-reveal='right'] {
-  transform: perspective(1200px) translate3d(60px, 0, -40px) rotateY(-8deg);
-}
-.reveal-3d[data-reveal='right'].is-revealed {
-  transform: perspective(1200px) translate3d(0, 0, 0) rotateY(0);
-}
-
-/* Variant: rise straight up (subtle) */
-.reveal-3d[data-reveal='rise'] {
-  transform: perspective(1200px) translate3d(0, 32px, 0) scale(0.97);
-}
-.reveal-3d[data-reveal='rise'].is-revealed {
-  transform: perspective(1200px) translate3d(0, 0, 0) scale(1);
-}
-
-/* Staggered children — start hidden, fade in when parent reveals */
-.reveal-3d[data-stagger] > * {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  transition:
-    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-3d[data-stagger] > *.is-revealed {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-/* Accessibility — kill 3D for users with vestibular sensitivity */
-@media (prefers-reduced-motion: reduce) {
-  .reveal-3d,
-  .reveal-3d[data-reveal='left'],
-  .reveal-3d[data-reveal='right'],
-  .reveal-3d[data-reveal='rise'],
-  .reveal-3d[data-stagger] > * {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: opacity 0.3s ease !important;
-  }
-}
-
 </style>
 </head>
 <body>
@@ -1894,7 +1634,7 @@ html {
 <div class="page-wrap">
 
 <!-- ══════════ NAV ══════════ -->
-<nav style="padding: 18px 56px;">
+<nav>
   <div class="nav-logo"><span class="text-2xl font-bold text-white">UR LF <span style="color: #D4A373;">✘</span> <span style="color: #ef4444;">UP ™</span></span></div>
   <div class="nav-links">
     <a href="#how" data-en="How It Works" data-ar="كيف يعمل">How It Works</a>
@@ -1904,38 +1644,12 @@ html {
     <a href="#roadmap" data-en="Roadmap" data-ar="خارطة الطريق">Roadmap</a>
   </div>
   <div class="nav-right">
-    <div class="lang-toggles">
-      <button class="lang-btn lang-btn--active" data-lang="en" aria-label="Switch to English" aria-pressed="true">ENG</button>
-      <button class="lang-btn" data-lang="ar" aria-label="Switch to Arabic" aria-pressed="false">AR</button>
+    <div class="lang-pills" role="group" aria-label="Language">
+      <button id="lang-en" class="lang-pill lang-pill--active" aria-pressed="true">ENG</button>
+      <button id="lang-ar" class="lang-pill" aria-pressed="false">AR</button>
     </div>
-    <script>
-(function () {
-  function initLangToggle() {
-    var btns = document.querySelectorAll('.lang-btn');
-    if (!btns.length) return;
-    btns.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        btns.forEach(function (b) {
-          b.classList.remove('lang-btn--active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        this.classList.add('lang-btn--active');
-        this.setAttribute('aria-pressed', 'true');
-        document.documentElement.setAttribute('lang', this.dataset.lang);
-        document.documentElement.setAttribute('dir',
-          this.dataset.lang === 'ar' ? 'rtl' : 'ltr');
-      });
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initLangToggle);
-  } else {
-    initLangToggle();
-  }
-})();
-</script>
     <button id="nav-join-btn">Join Now</button>
-    <div id="nav-user-wrap" hidden="">
+    <div id="nav-user-wrap" hidden>
       <span id="nav-user-name"></span>
       <button id="nav-settings-btn" class="nav-settings-btn" aria-label="Account Settings"></button>
       <button id="nav-logout-btn">Sign Out</button>
@@ -1966,7 +1680,7 @@ html {
   </h1>
 
   <p class="hero-desc">
-    <span data-en="UrLife is not a social network. It's a &lt;strong&gt;project generation engine&lt;/strong&gt; — where ambitious ideas meet the right people, get filtered by AI, and transform into real businesses. &lt;strong&gt;Zero financial barriers. 100% merit-based.&lt;/strong&gt;" data-ar="UrLife ليست شبكة اجتماعية. إنه &lt;strong&gt;محرك توليد المشاريع&lt;/strong&gt; — حيث تلتقي الأفكار الطموحة بالأشخاص المناسبين، تُفلتَر بالذكاء الاصطناعي، وتتحول إلى أعمال حقيقية. &lt;strong&gt;صفر حواجز مالية. 100% قائم على الجدارة.&lt;/strong&gt;">UrLife is not a social network. It's a <strong>project generation engine</strong> — where ambitious ideas meet the right people, get filtered by AI, and transform into real businesses. <strong>Zero financial barriers. 100% merit-based.</strong></span>
+    <span data-en="UrLife is not a social network. It's a <strong>project generation engine</strong> — where ambitious ideas meet the right people, get filtered by AI, and transform into real businesses. <strong>Zero financial barriers. 100% merit-based.</strong>" data-ar="UrLife ليست شبكة اجتماعية. إنه <strong>محرك توليد المشاريع</strong> — حيث تلتقي الأفكار الطموحة بالأشخاص المناسبين، تُفلتَر بالذكاء الاصطناعي، وتتحول إلى أعمال حقيقية. <strong>صفر حواجز مالية. 100% قائم على الجدارة.</strong>">UrLife is not a social network. It's a <strong>project generation engine</strong> — where ambitious ideas meet the right people, get filtered by AI, and transform into real businesses. <strong>Zero financial barriers. 100% merit-based.</strong></span>
   </p>
 
   <div class="hero-btns">
@@ -1995,33 +1709,33 @@ html {
 </section>
 
 <!-- ══════════ NEXUS DASHBOARD ══════════ -->
-<section id="nexus-dashboard" hidden="">
+<section id="nexus-dashboard" hidden>
   <div class="nx-container">
     <div class="nx-header">
       <div id="nx-title"></div>
       <div id="nx-user-role"></div>
-      <button id="nexus-refresh" type="button">↻ Refresh</button>
+      <button id="nexus-refresh" type="button">&#8635; Refresh</button>
     </div>
-    <div id="nx-ideas-panel" hidden="">
+    <div id="nx-ideas-panel" hidden>
       <div id="nx-ideas-list"></div>
       <div id="nx-ideas-sentinel"></div>
     </div>
-    <div id="nx-matches-panel" hidden="">
+    <div id="nx-matches-panel" hidden>
       <div id="nx-matches-list"></div>
       <div id="nx-matches-sentinel"></div>
     </div>
-    <div id="nx-skeleton" hidden=""></div>
-    <div id="nx-empty" hidden=""></div>
-    <div id="nx-error" hidden=""></div>
+    <div id="nx-skeleton" hidden></div>
+    <div id="nx-empty"    hidden></div>
+    <div id="nx-error"    hidden></div>
   </div>
 </section>
 
 <div class="divline"></div>
 
 <!-- ══════════ HOW IT WORKS ══════════ -->
-<div class="section reveal reveal-3d in" data-reveal="rise" id="how">
+<div class="section reveal" id="how">
   <div class="sec-chip" data-en="The Process" data-ar="آلية العمل">The Process</div>
-  <h2 class="sec-title" data-en="From Idea in Your Head&lt;br&gt;to &lt;span class='g'&gt;Business on the Ground&lt;/span&gt;" data-ar="من فكرة في دماغك&lt;br&gt;إلى &lt;span class='g'&gt;مشروع على أرض الواقع&lt;/span&gt;">From Idea in Your Head<br>to <span class="g">Business on the Ground</span></h2>
+  <h2 class="sec-title" data-en="From Idea in Your Head<br>to <span class='g'>Business on the Ground</span>" data-ar="من فكرة في دماغك<br>إلى <span class='g'>مشروع على أرض الواقع</span>">From Idea in Your Head<br>to <span class="g">Business on the Ground</span></h2>
   <p class="sec-body" data-en="Five precise steps from the moment someone submits their idea to the moment execution begins — all within a defined, transparent system." data-ar="خمس خطوات محددة من لحظة تقديم الفكرة حتى بدء التنفيذ — كل شيء ضمن نظام شفاف ومحدد.">Five precise steps from the moment someone submits their idea to the moment execution begins — all within a defined, transparent system.</p>
 
   <div class="process">
@@ -2058,7 +1772,7 @@ html {
       <div class="ps" style="border-color:var(--goldl);">
         <span class="ps-num">STEP 05</span>
         <div class="ps-ico" style="background:var(--goldf);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></div>
-        <h3 data-en="Execute &amp; Share" data-ar="التنفيذ وتوزيع النجاح">Execute &amp; Share</h3>
+        <h3 data-en="Execute & Share" data-ar="التنفيذ وتوزيع النجاح">Execute & Share</h3>
         <p data-en="The project launches inside UrLife's infrastructure. When it succeeds, equity or revenue share is distributed to all contributors." data-ar="ينطلق المشروع داخل بنية UrLife. عند النجاح، تُوزَّع الحصص على جميع المساهمين.">The project launches inside UrLife's infrastructure. When it succeeds, equity or revenue share is distributed to all contributors.</p>
         <span class="ps-time" data-en="Equity / Rev-Share" data-ar="حصة / مشاركة إيراد">Equity / Rev-Share</span>
       </div>
@@ -2069,12 +1783,12 @@ html {
 <div class="divline"></div>
 
 <!-- ══════════ 3 ROLES ══════════ -->
-<div class="section reveal in" id="roles">
+<div class="section reveal" id="roles">
   <div class="sec-chip" data-en="Who It's For" data-ar="من هو لهم">Who It's For</div>
-  <h2 class="sec-title" data-en="3 Types of Minds&lt;br&gt;&lt;span class='g'&gt;That Complete Each Other&lt;/span&gt;" data-ar="3 أنواع من العقول&lt;br&gt;&lt;span class='g'&gt;تكمل بعضها&lt;/span&gt;">3 Types of Minds<br><span class="g">That Complete Each Other</span></h2>
+  <h2 class="sec-title" data-en="3 Types of Minds<br><span class='g'>That Complete Each Other</span>" data-ar="3 أنواع من العقول<br><span class='g'>تكمل بعضها</span>">3 Types of Minds<br><span class="g">That Complete Each Other</span></h2>
   <p class="sec-body" data-en="Every person on UrLife has something to give and something to gain. The AI matching engine ensures everyone finds exactly who completes them." data-ar="كل شخص على UrLife لديه ما يعطيه وما يكسبه. يضمن محرك المطابقة الذكي أن يجد كل شخص من يكمله بالضبط.">Every person on UrLife has something to give and something to gain. The AI matching engine ensures everyone finds exactly who completes them.</p>
 
-  <div class="roles-grid reveal-3d" data-stagger="80">
+  <div class="roles-grid">
     <div class="role-card rc-gold">
       <div class="rc-num">01</div>
       <span class="rc-ico"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.9.27-1.85.26-2.83.07-1.27-.16-2.54-.67-3.71-.36-.81-.9-1.52-1.57-2.09-.63-.54-1.38-.92-2.18-1.1-.79-.19-1.61-.2-2.4-.03-.78.17-1.51.54-2.12 1.07-.66.57-1.18 1.28-1.53 2.08-.5 1.17-.72 2.44-.64 3.71-.01.98.08 1.93.26 2.83"></path><path d="M12 2v4"></path><path d="M12 18v4"></path></svg></span>
@@ -2082,7 +1796,7 @@ html {
       <p data-en="Has a powerful business idea but needs people to build it. No technical expertise or capital required — just a clear vision and real ambition." data-ar="عنده فكرة مشروع قوية لكن يحتاج من يبنيها معه. لا يُشترط خبرة تقنية أو مال — فقط رؤية واضحة وطموح حقيقي.">Has a powerful business idea but needs people to build it. No technical expertise or capital required — just a clear vision and real ambition.</p>
       <ul class="rc-list">
         <li data-en="Submit idea and request closed meeting" data-ar="تقديم الفكرة وطلب اجتماع مغلق">Submit idea and request closed meeting</li>
-        <li data-en="Get matched with co-founders &amp; builders" data-ar="الحصول على co-founders وbuilders مناسبين">Get matched with co-founders &amp; builders</li>
+        <li data-en="Get matched with co-founders & builders" data-ar="الحصول على co-founders وbuilders مناسبين">Get matched with co-founders & builders</li>
         <li data-en="Full AI support throughout execution" data-ar="دعم AI كامل طوال التنفيذ">Full AI support throughout execution</li>
         <li data-en="Retain majority equity in your venture" data-ar="الاحتفاظ بالحصة الأكبر في مشروعك">Retain majority equity in your venture</li>
       </ul>
@@ -2117,12 +1831,12 @@ html {
 <div class="divline"></div>
 
 <!-- ══════════ CLOSED MEETING ══════════ -->
-<div class="section reveal in" id="meeting">
+<div class="section reveal" id="meeting">
   <div class="sec-chip" data-en="The Gateway" data-ar="البوابة الحقيقية">The Gateway</div>
-  <h2 class="sec-title" data-en="The Closed Meeting —&lt;br&gt;&lt;span class='g'&gt;Heart of the System&lt;/span&gt;" data-ar="الاجتماع المغلق —&lt;br&gt;&lt;span class='g'&gt;قلب النظام&lt;/span&gt;">The Closed Meeting —<br><span class="g">Heart of the System</span></h2>
+  <h2 class="sec-title" data-en="The Closed Meeting —<br><span class='g'>Heart of the System</span>" data-ar="الاجتماع المغلق —<br><span class='g'>قلب النظام</span>">The Closed Meeting —<br><span class="g">Heart of the System</span></h2>
   <p class="sec-body" data-en="Not just a call — this is the gateway. Here UrLife decides whether your idea is worthy of our time, resources, and partnership." data-ar="ليس مجرد مكالمة — هذه هي البوابة الحقيقية. هنا تقرر UrLife هل فكرتك تستحق وقتنا ومواردنا وشراكتنا.">Not just a call — this is the gateway. Here UrLife decides whether your idea is worthy of our time, resources, and partnership.</p>
 
-  <div class="meeting-box reveal-scale in">
+  <div class="meeting-box reveal-scale">
     <div class="mb-top">
       <h3 data-en="How the Closed Meeting Works — Exactly" data-ar="كيف يعمل الاجتماع المغلق — بالتفصيل"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:8px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>How the Closed Meeting Works — Exactly</h3>
       <span class="restricted" data-en="INVITE ONLY" data-ar="بدعوة فقط">INVITE ONLY</span>
@@ -2163,15 +1877,15 @@ html {
 <div class="divline"></div>
 
 <!-- ══════════ REVENUE ══════════ -->
-<div class="section reveal reveal-3d in" data-reveal="rise" id="revenue">
+<div class="section reveal" id="revenue">
   <div class="sec-chip" data-en="Revenue Model" data-ar="نموذج الإيراد">Revenue Model</div>
-  <h2 class="sec-title" data-en="UrLife Wins&lt;br&gt;&lt;span class='g'&gt;Only When You Win&lt;/span&gt;" data-ar="UrLife تربح&lt;br&gt;&lt;span class='g'&gt;فقط لما تربح أنت&lt;/span&gt;">UrLife Wins<br><span class="g">Only When You Win</span></h2>
+  <h2 class="sec-title" data-en="UrLife Wins<br><span class='g'>Only When You Win</span>" data-ar="UrLife تربح<br><span class='g'>فقط لما تربح أنت</span>">UrLife Wins<br><span class="g">Only When You Win</span></h2>
   <p class="sec-body" data-en="No upfront fees. No subscriptions. UrLife earns only when the projects it supports generate revenue — that's real alignment." data-ar="لا رسوم مسبقة. لا اشتراكات. UrLife تكسب فقط عندما تُولِّد المشاريع التي تدعمها إيراداً — هذا هو التوافق الحقيقي.">No upfront fees. No subscriptions. UrLife earns only when the projects it supports generate revenue — that's real alignment.</p>
 
   <div class="rev-grid">
     <div class="rev-card rev-main">
       <div class="rev-ico"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
-      <h3 data-en="Equity &amp; Revenue Share" data-ar="الحصة والمشاركة في الإيراد">Equity &amp; Revenue Share</h3>
+      <h3 data-en="Equity & Revenue Share" data-ar="الحصة والمشاركة في الإيراد">Equity & Revenue Share</h3>
       <p data-en="UrLife takes a small stake in every project it partners with — agreed upon transparently from day one. When the project succeeds, everyone gets their share." data-ar="UrLife تأخذ حصة صغيرة في كل مشروع تشارك فيه — متفق عليها بشفافية من اليوم الأول. عند نجاح المشروع، يأخذ الجميع نصيبهم.">UrLife takes a small stake in every project it partners with — agreed upon transparently from day one. When the project succeeds, everyone gets their share.</p>
       <div class="rev-num">5–15%</div>
       <div class="rev-num-l" data-en="equity per project, based on contribution level" data-ar="حصة في المشروع حسب مستوى المساهمة">equity per project, based on contribution level</div>
@@ -2179,7 +1893,7 @@ html {
         <li data-en="Equity = long-term strategic partnership" data-ar="Equity = شراكة استراتيجية طويلة المدى">Equity = long-term strategic partnership</li>
         <li data-en="Revenue Share = % of monthly earnings" data-ar="مشاركة الإيراد = % من الأرباح الشهرية">Revenue Share = % of monthly earnings</li>
         <li data-en="Advisory Stake = AI + network access only" data-ar="حصة استشارية = AI + وصول للشبكة فقط">Advisory Stake = AI + network access only</li>
-        <li data-en="Written &amp; signed before execution begins" data-ar="مكتوبة وموقعة قبل بدء التنفيذ">Written &amp; signed before execution begins</li>
+        <li data-en="Written & signed before execution begins" data-ar="مكتوبة وموقعة قبل بدء التنفيذ">Written & signed before execution begins</li>
       </ul>
       <span class="rev-pill" data-en="Primary Revenue Source" data-ar="المصدر الرئيسي للإيراد">Primary Revenue Source</span>
     </div>
@@ -2201,7 +1915,7 @@ html {
     </div>
   </div>
 
-  <div class="inv-box reveal in">
+  <div class="inv-box reveal">
     <div>
       <h3 data-en="The Enabler Layer — Smart Capital Meets Vetted Ideas" data-ar="طبقة الممكّنين — رأس المال الذكي يلتقي بالأفكار المُفلتَرة"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:8px;"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>The Enabler Layer — Smart Capital Meets Vetted Ideas</h3>
       <p data-en="People with capital but without ideas — the platform gives them the opportunity to invest in AI-filtered, thoroughly assessed ventures. Not random investing — investing in ideas that have been validated for executability." data-ar="أشخاص عندهم مال لكن ليس لديهم أفكار — المنصة تمنحهم فرصة الاستثمار في مشاريع مُفلتَرة بالذكاء الاصطناعي وموثوقة. ليس استثماراً عشوائياً — استثمار في أفكار تم التحقق من قابليتها للتنفيذ.">People with capital but without ideas — the platform gives them the opportunity to invest in AI-filtered, thoroughly assessed ventures. Not random investing — investing in ideas that have been validated for executability.</p>
@@ -2213,7 +1927,7 @@ html {
       </div>
     </div>
     <div class="inv-stat">
-      <div class="inv-val" data-en="Win&lt;br&gt;Win" data-ar="الكل&lt;br&gt;يربح">Win<br>Win</div>
+      <div class="inv-val" data-en="Win<br>Win" data-ar="الكل<br>يربح">Win<br>Win</div>
       <div class="inv-label" data-en="Everyone benefits — the idea, the capital, the expertise" data-ar="الكل مستفيد — الفكرة، المال، الخبرة">Everyone benefits — the idea, the capital, the expertise</div>
     </div>
   </div>
@@ -2222,34 +1936,34 @@ html {
 <div class="divline"></div>
 
 <!-- ══════════ AI LAYER ══════════ -->
-<div class="section reveal in">
+<div class="section reveal">
   <div class="sec-chip" data-en="AI Intelligence" data-ar="الذكاء الاصطناعي">AI Intelligence</div>
-  <h2 class="sec-title" data-en="AI Inside UrLife —&lt;br&gt;&lt;span class='g'&gt;The Force Multiplier&lt;/span&gt;" data-ar="AI داخل UrLife —&lt;br&gt;&lt;span class='g'&gt;مُضاعف القوة&lt;/span&gt;">AI Inside UrLife —<br><span class="g">The Force Multiplier</span></h2>
+  <h2 class="sec-title" data-en="AI Inside UrLife —<br><span class='g'>The Force Multiplier</span>" data-ar="AI داخل UrLife —<br><span class='g'>مُضاعف القوة</span>">AI Inside UrLife —<br><span class="g">The Force Multiplier</span></h2>
   <p class="sec-body" data-en="Not a feature — the core intelligence layer that makes UrLife faster, smarter, and more accurate than any human-only process." data-ar="ليست ميزة — بل طبقة الذكاء الأساسية التي تجعل UrLife أسرع وأذكى وأدق من أي عملية بشرية بحتة.">Not a feature — the core intelligence layer that makes UrLife faster, smarter, and more accurate than any human-only process.</p>
 
-  <div class="ai-panel reveal-scale in">
+  <div class="ai-panel reveal-scale">
     <div class="ai-head">
-      <h3><svg width="22" height="22" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><defs><radialGradient id="brn-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#f5e0a0"></stop><stop offset="45%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#5a2a08"></stop></radialGradient><filter id="brn-f"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><circle cx="18" cy="18" r="14" fill="url(#brn-rg)" filter="url(#brn-f)"></circle><circle cx="18" cy="18" r="4" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"></circle><circle cx="18" cy="18" r="2" fill="rgba(255,255,255,0.45)"></circle><line x1="18" y1="4" x2="18" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="18" y1="22" x2="18" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="4" y1="18" x2="14" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="22" y1="18" x2="32" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><circle cx="18" cy="4" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="18" cy="32" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="4" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="32" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"></circle><ellipse cx="13" cy="11" rx="3" ry="1.8" fill="rgba(255,255,255,0.15)" transform="rotate(-25 13 11)"></ellipse></svg><span data-en="What AI Does Inside UrLife" data-ar="ما يفعله AI داخل UrLife">What AI Does Inside UrLife</span></h3>
+      <h3><svg width="22" height="22" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:8px"><defs><radialGradient id="brn-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#f5e0a0"/><stop offset="45%" stop-color="#D4A373"/><stop offset="100%" stop-color="#5a2a08"/></radialGradient><filter id="brn-f"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><circle cx="18" cy="18" r="14" fill="url(#brn-rg)" filter="url(#brn-f)"/><circle cx="18" cy="18" r="4" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="18" cy="18" r="2" fill="rgba(255,255,255,0.45)"/><line x1="18" y1="4" x2="18" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="18" y1="22" x2="18" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="4" y1="18" x2="14" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="22" y1="18" x2="32" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><circle cx="18" cy="4" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="18" cy="32" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="4" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="32" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"/><ellipse cx="13" cy="11" rx="3" ry="1.8" fill="rgba(255,255,255,0.15)" transform="rotate(-25 13 11)"/></svg><span data-en="What AI Does Inside UrLife" data-ar="ما يفعله AI داخل UrLife">What AI Does Inside UrLife</span></h3>
       <span class="ai-badge" data-en="PHASE 2 LAUNCH" data-ar="إطلاق المرحلة 2">PHASE 2 LAUNCH</span>
     </div>
     <div class="ai-features">
       <div class="aif">
-        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pyr-g1" x1="15%" y1="0%" x2="85%" y2="100%"><stop offset="0%" stop-color="#ff8870"></stop><stop offset="50%" stop-color="#ef4444"></stop><stop offset="100%" stop-color="#7a1010"></stop></linearGradient><linearGradient id="pyr-g2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff9080"></stop><stop offset="100%" stop-color="#c02020"></stop></linearGradient><filter id="pyr-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#ef4444" flood-opacity="0.55"></feDropShadow></filter></defs><g filter="url(#pyr-f)"><polygon points="18,4 32,28 18,32 4,28" fill="url(#pyr-g1)"></polygon><polygon points="18,4 32,28 18,32" fill="url(#pyr-g2)" opacity="0.75"></polygon><polygon points="18,4 4,28 18,32" fill="rgba(0,0,0,0.2)"></polygon></g><polygon points="4,28 32,28 18,32" fill="rgba(0,0,0,0.25)"></polygon><ellipse cx="15" cy="12" rx="3" ry="1.5" fill="rgba(255,255,255,0.25)" transform="rotate(-20 15 12)"></ellipse><circle cx="18" cy="8" r="1.5" fill="rgba(255,255,255,0.4)"></circle></svg></div>
+        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pyr-g1" x1="15%" y1="0%" x2="85%" y2="100%"><stop offset="0%" stop-color="#ff8870"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#7a1010"/></linearGradient><linearGradient id="pyr-g2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff9080"/><stop offset="100%" stop-color="#c02020"/></linearGradient><filter id="pyr-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#ef4444" flood-opacity="0.55"/></filter></defs><g filter="url(#pyr-f)"><polygon points="18,4 32,28 18,32 4,28" fill="url(#pyr-g1)"/><polygon points="18,4 32,28 18,32" fill="url(#pyr-g2)" opacity="0.75"/><polygon points="18,4 4,28 18,32" fill="rgba(0,0,0,0.2)"/></g><polygon points="4,28 32,28 18,32" fill="rgba(0,0,0,0.25)"/><ellipse cx="15" cy="12" rx="3" ry="1.5" fill="rgba(255,255,255,0.25)" transform="rotate(-20 15 12)"/><circle cx="18" cy="8" r="1.5" fill="rgba(255,255,255,0.4)"/></svg></div>
         <h4 data-en="Idea Evaluator" data-ar="مُقيّم الأفكار">Idea Evaluator</h4>
         <p data-en="Analyzes any idea and generates a Viability Score with detailed feedback on market, competition, and feasibility." data-ar="يحلل أي فكرة ويولّد Viability Score مع ملاحظات تفصيلية حول السوق والمنافسة والجدوى.">Analyzes any idea and generates a Viability Score with detailed feedback on market, competition, and feasibility.</p>
       </div>
       <div class="aif">
-        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gem-g1" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#f5e0a0"></stop><stop offset="40%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#7a4010"></stop></linearGradient><linearGradient id="gem-g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8c880"></stop><stop offset="100%" stop-color="#5a2800"></stop></linearGradient><filter id="gem-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#gem-f)"><polygon points="18,3 31,14 18,33 5,14" fill="url(#gem-g1)"></polygon><polygon points="18,3 31,14 18,18" fill="rgba(255,255,255,0.25)"></polygon><polygon points="5,14 18,14 18,33" fill="rgba(0,0,0,0.2)"></polygon><polygon points="5,14 18,3 18,14" fill="rgba(255,255,255,0.1)"></polygon></g><line x1="5" y1="14" x2="31" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"></line><ellipse cx="14" cy="9" rx="3.5" ry="2" fill="rgba(255,255,255,0.2)" transform="rotate(-30 14 9)"></ellipse></svg></div>
+        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gem-g1" x1="20%" y1="0%" x2="80%" y2="100%"><stop offset="0%" stop-color="#f5e0a0"/><stop offset="40%" stop-color="#D4A373"/><stop offset="100%" stop-color="#7a4010"/></linearGradient><linearGradient id="gem-g2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#e8c880"/><stop offset="100%" stop-color="#5a2800"/></linearGradient><filter id="gem-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><g filter="url(#gem-f)"><polygon points="18,3 31,14 18,33 5,14" fill="url(#gem-g1)"/><polygon points="18,3 31,14 18,18" fill="rgba(255,255,255,0.25)"/><polygon points="5,14 18,14 18,33" fill="rgba(0,0,0,0.2)"/><polygon points="5,14 18,3 18,14" fill="rgba(255,255,255,0.1)"/></g><line x1="5" y1="14" x2="31" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><ellipse cx="14" cy="9" rx="3.5" ry="2" fill="rgba(255,255,255,0.2)" transform="rotate(-30 14 9)"/></svg></div>
         <h4 data-en="Smart Matcher" data-ar="المطابق الذكي">Smart Matcher</h4>
         <p data-en="Matches ideas with people based on skills, ambition level, work style, and complementarity — not just keywords." data-ar="يطابق الأفكار بالأشخاص بناءً على المهارات ومستوى الطموح وأسلوب العمل والتكامل.">Matches ideas with people based on skills, ambition level, work style, and complementarity — not just keywords.</p>
       </div>
       <div class="aif">
-        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bc-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f0d080"></stop><stop offset="100%" stop-color="#c07830"></stop></linearGradient><linearGradient id="bc-gm" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#a05020"></stop></linearGradient><filter id="bc-f"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#bc-f)"><rect x="3" y="20" width="7" height="12" rx="1.5" fill="url(#bc-gm)"></rect><ellipse cx="6.5" cy="20" rx="3.5" ry="1.5" fill="#f0d080"></ellipse><rect x="14" y="12" width="8" height="20" rx="1.5" fill="url(#bc-gf)"></rect><ellipse cx="18" cy="12" rx="4" ry="1.5" fill="#f5e0a0"></ellipse><rect x="26" y="6" width="7" height="26" rx="1.5" fill="url(#bc-gf)"></rect><ellipse cx="29.5" cy="6" rx="3.5" ry="1.5" fill="#fffad0"></ellipse></g></svg></div>
+        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="bc-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f0d080"/><stop offset="100%" stop-color="#c07830"/></linearGradient><linearGradient id="bc-gm" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#D4A373"/><stop offset="100%" stop-color="#a05020"/></linearGradient><filter id="bc-f"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><g filter="url(#bc-f)"><rect x="3" y="20" width="7" height="12" rx="1.5" fill="url(#bc-gm)"/><ellipse cx="6.5" cy="20" rx="3.5" ry="1.5" fill="#f0d080"/><rect x="14" y="12" width="8" height="20" rx="1.5" fill="url(#bc-gf)"/><ellipse cx="18" cy="12" rx="4" ry="1.5" fill="#f5e0a0"/><rect x="26" y="6" width="7" height="26" rx="1.5" fill="url(#bc-gf)"/><ellipse cx="29.5" cy="6" rx="3.5" ry="1.5" fill="#fffad0"/></g></svg></div>
         <h4 data-en="Market Analyst" data-ar="محلل السوق">Market Analyst</h4>
         <p data-en="Runs automatic market research, identifies the opportunity size, strongest competitors, and go-to-market strategy." data-ar="يُجري أبحاث سوق تلقائية، يحدد حجم الفرصة وأقوى المنافسين واستراتيجية الدخول للسوق.">Runs automatic market research, identifies the opportunity size, strongest competitors, and go-to-market strategy.</p>
       </div>
       <div class="aif">
-        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="copi-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"></stop><stop offset="45%" stop-color="#D4AF37"></stop><stop offset="100%" stop-color="#6F540D"></stop></radialGradient><filter id="copi-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.55"></feDropShadow></filter></defs><circle cx="18" cy="18" r="14" fill="url(#copi-rg)" filter="url(#copi-f)"></circle><circle cx="18" cy="18" r="5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"></circle><circle cx="18" cy="18" r="2" fill="rgba(255,255,255,0.5)"></circle><line x1="18" y1="4" x2="18" y2="13" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="18" y1="23" x2="18" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="4" y1="18" x2="13" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><line x1="23" y1="18" x2="32" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"></line><circle cx="18" cy="4" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="18" cy="32" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="4" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"></circle><circle cx="32" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"></circle><ellipse cx="13" cy="11" rx="3" ry="1.8" fill="rgba(255,255,255,0.15)" transform="rotate(-25 13 11)"></ellipse></svg></div>
+        <div class="aif-ico"><svg width="36" height="36" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="copi-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"/><stop offset="45%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#6F540D"/></radialGradient><filter id="copi-f"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#D4AF37" flood-opacity="0.55"/></filter></defs><circle cx="18" cy="18" r="14" fill="url(#copi-rg)" filter="url(#copi-f)"/><circle cx="18" cy="18" r="5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="18" cy="18" r="2" fill="rgba(255,255,255,0.5)"/><line x1="18" y1="4" x2="18" y2="13" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="18" y1="23" x2="18" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="4" y1="18" x2="13" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><line x1="23" y1="18" x2="32" y2="18" stroke="rgba(255,255,255,0.35)" stroke-width="1"/><circle cx="18" cy="4" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="18" cy="32" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="4" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"/><circle cx="32" cy="18" r="1.5" fill="rgba(255,255,255,0.5)"/><ellipse cx="13" cy="11" rx="3" ry="1.8" fill="rgba(255,255,255,0.15)" transform="rotate(-25 13 11)"/></svg></div>
         <h4 data-en="Project Co-Pilot" data-ar="مساعد المشروع">Project Co-Pilot</h4>
         <p data-en="An AI assistant for every active project: tracks milestones, suggests next steps, resolves blockers, and keeps the team aligned." data-ar="مساعد AI لكل مشروع نشط: يتابع المعالم، يقترح الخطوات التالية، يحل العقبات، ويحافظ على تناسق الفريق.">An AI assistant for every active project: tracks milestones, suggests next steps, resolves blockers, and keeps the team aligned.</p>
       </div>
@@ -2263,11 +1977,11 @@ html {
 <div class="divline"></div>
 
 <!-- ══════════ ROADMAP ══════════ -->
-<div class="section reveal in" id="roadmap">
+<div class="section reveal" id="roadmap">
   <div class="sec-chip" data-en="The Journey" data-ar="خارطة الطريق">The Journey</div>
-  <h2 class="sec-title" data-en="From Day One&lt;br&gt;&lt;span class='g'&gt;to a Global Platform&lt;/span&gt;" data-ar="من اليوم الأول&lt;br&gt;&lt;span class='g'&gt;إلى منصة عالمية&lt;/span&gt;">From Day One<br><span class="g">to a Global Platform</span></h2>
+  <h2 class="sec-title" data-en="From Day One<br><span class='g'>to a Global Platform</span>" data-ar="من اليوم الأول<br><span class='g'>إلى منصة عالمية</span>">From Day One<br><span class="g">to a Global Platform</span></h2>
 
-  <div class="roadmap reveal-scale in">
+  <div class="roadmap reveal-scale">
     <div class="rm">
       <div class="rm-n">1</div>
       <div class="rm-when" data-en="MONTH 1–2 — SEED" data-ar="الشهر 1–2 — البذرة">MONTH 1–2 — SEED</div>
@@ -2293,43 +2007,43 @@ html {
       <div class="rm-n">4</div>
       <div class="rm-when" data-en="YEAR 2+ — EMPIRE" data-ar="السنة 2+ — الإمبراطورية">YEAR 2+ — EMPIRE</div>
       <h4 data-en="UrLife Global" data-ar="UrLife عالمي">UrLife Global</h4>
-      <p data-en="Corporate partnerships, Annual Summit, official UrLife Fund, expansion to MENA, Europe &amp; beyond. The YCombinator for the Arab world and Emerging Markets." data-ar="شراكات مؤسسية، قمة سنوية، صندوق UrLife الرسمي، التوسع لـ MENA وأوروبا وما بعدها. YCombinator العالم العربي والأسواق الناشئة.">Corporate partnerships, Annual Summit, official UrLife Fund, expansion to MENA, Europe &amp; beyond. The YCombinator for the Arab world and Emerging Markets.</p>
+      <p data-en="Corporate partnerships, Annual Summit, official UrLife Fund, expansion to MENA, Europe & beyond. The YCombinator for the Arab world and Emerging Markets." data-ar="شراكات مؤسسية، قمة سنوية، صندوق UrLife الرسمي، التوسع لـ MENA وأوروبا وما بعدها. YCombinator العالم العربي والأسواق الناشئة.">Corporate partnerships, Annual Summit, official UrLife Fund, expansion to MENA, Europe & beyond. The YCombinator for the Arab world and Emerging Markets.</p>
       <div class="rm-kpi" data-en="Goal: 10,000+ members + project portfolio" data-ar="هدف: 10,000+ عضو + محفظة مشاريع">Goal: 10,000+ members + project portfolio</div>
     </div>
   </div>
 </div>
 
 <!-- ══════════ MANIFESTO ══════════ -->
-<div class="manifesto reveal in">
+<div class="manifesto reveal">
   <div class="manifesto-watermark">URLIFE</div>
   <blockquote>
-    <span data-en="&quot;The difference between an idea that dies&lt;br&gt;and one that &lt;span class=&quot;g&quot;&gt;builds an empire&lt;/span&gt;&lt;br&gt;is not money —&lt;br&gt;it is &lt;span class=&quot;e&quot;&gt;who you meet.&lt;/span&gt;&quot;" data-ar="&quot;الفرق بين فكرة تموت&lt;br&gt;وفكرة &lt;span class=&quot;g&quot;&gt;تبني إمبراطورية&lt;/span&gt;&lt;br&gt;ليس المال —&lt;br&gt;بل &lt;span class=&quot;e&quot;&gt;من تلتقي به.&lt;/span&gt;&quot;">"The difference between an idea that dies<br>and one that <span class="g">builds an empire</span><br>is not money —<br>it is <span class="e">who you meet.</span>"</span>
+    <span data-en='"The difference between an idea that dies<br>and one that <span class="g">builds an empire</span><br>is not money —<br>it is <span class="e">who you meet.</span>"' data-ar='"الفرق بين فكرة تموت<br>وفكرة <span class="g">تبني إمبراطورية</span><br>ليس المال —<br>بل <span class="e">من تلتقي به.</span>"'>"The difference between an idea that dies<br>and one that <span class="g">builds an empire</span><br>is not money —<br>it is <span class="e">who you meet.</span>"</span>
   </blockquote>
   <p class="manifesto-sub" data-en="UrLife is not a product — it's a movement. A movement to transform wasted minds into real ventures that build the future." data-ar="UrLife ليس منتجاً — إنه حركة. حركة لتحويل العقول الضائعة إلى مشاريع حقيقية تبني المستقبل.">UrLife is not a product — it's a movement. A movement to transform wasted minds into real ventures that build the future.</p>
 </div>
 
 <!-- ══════════ TECH STACK ══════════ -->
-<div class="section reveal in">
+<div class="section reveal">
   <div class="sec-chip" data-en="Technology" data-ar="التكنولوجيا">Technology</div>
-  <h2 class="sec-title" data-en="Simple Stack,&lt;br&gt;&lt;span class='g'&gt;Massive Scale&lt;/span&gt;" data-ar="Stack بسيط،&lt;br&gt;&lt;span class='g'&gt;توسع ضخم&lt;/span&gt;">Simple Stack,<br><span class="g">Massive Scale</span></h2>
+  <h2 class="sec-title" data-en="Simple Stack,<br><span class='g'>Massive Scale</span>" data-ar="Stack بسيط،<br><span class='g'>توسع ضخم</span>">Simple Stack,<br><span class="g">Massive Scale</span></h2>
   <p class="sec-body" data-en="Start with what proves the concept. Add complexity only when the need is proven." data-ar="ابدأ بما يُثبت المفهوم. أضف التعقيد فقط عندما تثبت الحاجة.">Start with what proves the concept. Add complexity only when the need is proven.</p>
   <div class="tech-grid">
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="wf-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"></stop><stop offset="50%" stop-color="#D4AF37"></stop><stop offset="100%" stop-color="#6F540D"></stop></radialGradient><filter id="wf-f"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"></feDropShadow></filter></defs><circle cx="14" cy="14" r="11" fill="url(#wf-rg)" filter="url(#wf-f)"></circle><ellipse cx="14" cy="14" rx="4.5" ry="11" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"></ellipse><ellipse cx="14" cy="14" rx="11" ry="4" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"></ellipse><ellipse cx="10" cy="8" rx="3" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-25 10 8)"></ellipse></svg></div><div><div class="tc-name">Webflow / Framer</div><div class="tc-role" data-en="MVP Frontend" data-ar="الواجهة الأمامية MVP">MVP Frontend</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="at-gt" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f5e0a0"></stop><stop offset="100%" stop-color="#D4A373"></stop></linearGradient><linearGradient id="at-gs" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#b87030"></stop><stop offset="100%" stop-color="#7a3a10"></stop></linearGradient><filter id="at-f"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#at-f)"><polygon points="14,3 25,9 14,15 3,9" fill="url(#at-gt)"></polygon><polygon points="3,9 14,15 14,25 3,19" fill="rgba(180,110,40,0.85)"></polygon><polygon points="25,9 14,15 14,25 25,19" fill="url(#at-gs)"></polygon></g><ellipse cx="11" cy="6.5" rx="2.5" ry="1.2" fill="rgba(255,255,255,0.22)" transform="rotate(-20 11 6.5)"></ellipse></svg></div><div><div class="tc-name">Airtable / Notion</div><div class="tc-role" data-en="Database + CRM" data-ar="قاعدة البيانات + CRM">Database + CRM</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gpt-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"></stop><stop offset="45%" stop-color="#D4AF37"></stop><stop offset="100%" stop-color="#6F540D"></stop></radialGradient><filter id="gpt-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"></feDropShadow></filter></defs><circle cx="14" cy="14" r="11" fill="url(#gpt-rg)" filter="url(#gpt-f)"></circle><circle cx="14" cy="14" r="3.5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></circle><circle cx="14" cy="14" r="1.5" fill="rgba(255,255,255,0.5)"></circle><line x1="14" y1="3" x2="14" y2="10.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></line><line x1="14" y1="17.5" x2="14" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></line><line x1="3" y1="14" x2="10.5" y2="14" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></line><line x1="17.5" y1="14" x2="25" y2="14" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></line><circle cx="14" cy="3" r="1.2" fill="rgba(255,255,255,0.45)"></circle><circle cx="25" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"></circle><circle cx="3" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"></circle><ellipse cx="10" cy="8" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.15)" transform="rotate(-25 10 8)"></ellipse></svg></div><div><div class="tc-name">GPT-4 API</div><div class="tc-role" data-en="Idea Evaluation" data-ar="تقييم الأفكار">Idea Evaluation</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cal-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#F4D77A"></stop><stop offset="100%" stop-color="#7A5A0D"></stop></linearGradient><linearGradient id="cal-gt" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFEAB0"></stop><stop offset="100%" stop-color="#D4AF37"></stop></linearGradient><linearGradient id="cal-gs" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#9E7A1F"></stop><stop offset="100%" stop-color="#5C4010"></stop></linearGradient><filter id="cal-fi"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#cal-fi)"><rect x="3" y="7" width="16" height="16" rx="1.5" fill="url(#cal-gf)"></rect><polygon points="3,7 19,7 24,3 8,3" fill="url(#cal-gt)"></polygon><polygon points="19,7 24,3 24,19 19,23" fill="url(#cal-gs)"></polygon></g><line x1="3" y1="12" x2="19" y2="12" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></line><line x1="3" y1="17" x2="19" y2="17" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"></line><line x1="8" y1="7" x2="8" y2="23" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"></line><line x1="13" y1="7" x2="13" y2="23" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"></line></svg></div><div><div class="tc-name">Calendly</div><div class="tc-role" data-en="Closed Meeting Booking" data-ar="حجز الاجتماع المغلق">Closed Meeting Booking</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lt-g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff9070"></stop><stop offset="50%" stop-color="#ef4444"></stop><stop offset="100%" stop-color="#7a1010"></stop></linearGradient><linearGradient id="lt-g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff7060"></stop><stop offset="100%" stop-color="#b02020"></stop></linearGradient><filter id="lt-f"><feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#ef4444" flood-opacity="0.6"></feDropShadow></filter></defs><g filter="url(#lt-f)"><polygon points="15,2 21,11 16.5,11 20,26 8,15 13,15 9,2" fill="url(#lt-g1)"></polygon><polygon points="15,2 21,11 16.5,11 20,26" fill="url(#lt-g2)" opacity="0.6"></polygon></g><line x1="15" y1="2" x2="9" y2="15" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"></line></svg></div><div><div class="tc-name">Make.com / n8n</div><div class="tc-role" data-en="Workflow Automation" data-ar="أتمتة سير العمل">Workflow Automation</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cd-gf" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8e8b0"></stop><stop offset="50%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#7a4010"></stop></linearGradient><filter id="cd-f"><feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#cd-f)" transform="rotate(-8 14 14)"><rect x="2" y="8" width="22" height="14" rx="2" fill="url(#cd-gf)"></rect><rect x="2" y="12" width="22" height="4" fill="rgba(0,0,0,0.3)"></rect><rect x="4" y="17.5" width="8" height="2" rx="1" fill="rgba(255,255,255,0.5)"></rect><rect x="2" y="8" width="22" height="3" rx="2" fill="rgba(255,255,255,0.2)"></rect></g></svg></div><div><div class="tc-name">Stripe</div><div class="tc-role" data-en="Payments (Phase 2)" data-ar="المدفوعات (المرحلة 2)">Payments (Phase 2)</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="bl-rg" cx="35%" cy="25%" r="75%"><stop offset="0%" stop-color="#FFEAB0"></stop><stop offset="50%" stop-color="#D4AF37"></stop><stop offset="100%" stop-color="#6F540D"></stop></radialGradient><filter id="bl-f"><feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"></feDropShadow></filter></defs><g filter="url(#bl-f)"><path d="M14,3 C9.5,3 6,7 6,12 L6,19 L22,19 L22,12 C22,7 18.5,3 14,3 Z" fill="url(#bl-rg)"></path><rect x="6" y="18.5" width="16" height="2.5" rx="1.25" fill="rgba(212,175,55,0.8)"></rect><ellipse cx="14" cy="23" rx="3" ry="1.5" fill="rgba(212,175,55,0.7)"></ellipse></g><ellipse cx="10" cy="8.5" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-20 10 8.5)"></ellipse></svg></div><div><div class="tc-name">Resend / WhatsApp</div><div class="tc-role" data-en="Notifications" data-ar="الإشعارات">Notifications</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ph-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f0d080"></stop><stop offset="100%" stop-color="#c07830"></stop></linearGradient><filter id="ph-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.45"></feDropShadow></filter></defs><g filter="url(#ph-f)"><rect x="2" y="18" width="6" height="8" rx="1.5" fill="url(#ph-gf)"></rect><ellipse cx="5" cy="18" rx="3" ry="1.2" fill="#f8e8a0"></ellipse><rect x="11" y="12" width="6" height="14" rx="1.5" fill="url(#ph-gf)"></rect><ellipse cx="14" cy="12" rx="3" ry="1.2" fill="#faf0c0"></ellipse><rect x="20" y="6" width="6" height="20" rx="1.5" fill="url(#ph-gf)"></rect><ellipse cx="23" cy="6" rx="3" ry="1.2" fill="#fffad0"></ellipse></g></svg></div><div><div class="tc-name">PostHog</div><div class="tc-role" data-en="Analytics + Behavior" data-ar="التحليلات + السلوك">Analytics + Behavior</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="pc-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#f5e0a0"></stop><stop offset="45%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#5a2a08"></stop></radialGradient><filter id="pc-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"></feDropShadow></filter></defs><circle cx="14" cy="14" r="11" fill="url(#pc-rg)" filter="url(#pc-f)"></circle><circle cx="14" cy="14" r="3" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"></circle><circle cx="14" cy="14" r="1.5" fill="rgba(255,255,255,0.45)"></circle><line x1="14" y1="3" x2="14" y2="11" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"></line><line x1="14" y1="17" x2="14" y2="25" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"></line><line x1="3" y1="14" x2="11" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"></line><line x1="17" y1="14" x2="25" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"></line><circle cx="14" cy="3" r="1.2" fill="rgba(255,255,255,0.45)"></circle><circle cx="25" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"></circle><circle cx="3" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"></circle><circle cx="14" cy="25" r="1.2" fill="rgba(255,255,255,0.45)"></circle><ellipse cx="10" cy="8" rx="2.5" ry="1.4" fill="rgba(255,255,255,0.18)" transform="rotate(-25 10 8)"></ellipse></svg></div><div><div class="tc-name">Pinecone / Chroma</div><div class="tc-role" data-en="AI Matching (Phase 2)" data-ar="مطابقة AI (المرحلة 2)">AI Matching (Phase 2)</div></div></div>
-    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gr-rg" cx="35%" cy="30%" r="70%"><stop offset="0%" stop-color="#f5e0a0"></stop><stop offset="50%" stop-color="#D4A373"></stop><stop offset="100%" stop-color="#7a4010"></stop></radialGradient><filter id="gr-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.45"></feDropShadow></filter></defs><g filter="url(#gr-f)"><path d="M14,5.5 L15.8,3 L17.6,5.5 L20.2,4.5 L20.2,7.2 L23,8 L22,10.5 L25,12.5 L22.5,15 L24,17.5 L21,19 L21,21.5 L18.2,21 L17,24 L14,22.5 L11,24 L9.8,21 L7,21.5 L7,19 L4,17.5 L5.5,15 L3,12.5 L6,10.5 L5,8 L7.8,7.2 L7.8,4.5 L10.4,5.5 Z" fill="url(#gr-rg)"></path><circle cx="14" cy="14" r="4.5" fill="rgba(0,0,0,0.3)"></circle><circle cx="14" cy="14" r="2.5" fill="rgba(255,255,255,0.15)"></circle></g><ellipse cx="10" cy="8" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-30 10 8)"></ellipse></svg></div><div><div class="tc-name">Next.js</div><div class="tc-role" data-en="Full Platform (Phase 2)" data-ar="المنصة الكاملة (المرحلة 2)">Full Platform (Phase 2)</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="wf-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"/><stop offset="50%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#6F540D"/></radialGradient><filter id="wf-f"><feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"/></filter></defs><circle cx="14" cy="14" r="11" fill="url(#wf-rg)" filter="url(#wf-f)"/><ellipse cx="14" cy="14" rx="4.5" ry="11" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/><ellipse cx="14" cy="14" rx="11" ry="4" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/><ellipse cx="10" cy="8" rx="3" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-25 10 8)"/></svg></div><div><div class="tc-name">Webflow / Framer</div><div class="tc-role" data-en="MVP Frontend" data-ar="الواجهة الأمامية MVP">MVP Frontend</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="at-gt" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f5e0a0"/><stop offset="100%" stop-color="#D4A373"/></linearGradient><linearGradient id="at-gs" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#b87030"/><stop offset="100%" stop-color="#7a3a10"/></linearGradient><filter id="at-f"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><g filter="url(#at-f)"><polygon points="14,3 25,9 14,15 3,9" fill="url(#at-gt)"/><polygon points="3,9 14,15 14,25 3,19" fill="rgba(180,110,40,0.85)"/><polygon points="25,9 14,15 14,25 25,19" fill="url(#at-gs)"/></g><ellipse cx="11" cy="6.5" rx="2.5" ry="1.2" fill="rgba(255,255,255,0.22)" transform="rotate(-20 11 6.5)"/></svg></div><div><div class="tc-name">Airtable / Notion</div><div class="tc-role" data-en="Database + CRM" data-ar="قاعدة البيانات + CRM">Database + CRM</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gpt-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#FFEAB0"/><stop offset="45%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#6F540D"/></radialGradient><filter id="gpt-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"/></filter></defs><circle cx="14" cy="14" r="11" fill="url(#gpt-rg)" filter="url(#gpt-f)"/><circle cx="14" cy="14" r="3.5" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><circle cx="14" cy="14" r="1.5" fill="rgba(255,255,255,0.5)"/><line x1="14" y1="3" x2="14" y2="10.5" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><line x1="14" y1="17.5" x2="14" y2="25" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><line x1="3" y1="14" x2="10.5" y2="14" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><line x1="17.5" y1="14" x2="25" y2="14" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><circle cx="14" cy="3" r="1.2" fill="rgba(255,255,255,0.45)"/><circle cx="25" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"/><circle cx="3" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"/><ellipse cx="10" cy="8" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.15)" transform="rotate(-25 10 8)"/></svg></div><div><div class="tc-name">GPT-4 API</div><div class="tc-role" data-en="Idea Evaluation" data-ar="تقييم الأفكار">Idea Evaluation</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cal-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#F4D77A"/><stop offset="100%" stop-color="#7A5A0D"/></linearGradient><linearGradient id="cal-gt" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FFEAB0"/><stop offset="100%" stop-color="#D4AF37"/></linearGradient><linearGradient id="cal-gs" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#9E7A1F"/><stop offset="100%" stop-color="#5C4010"/></linearGradient><filter id="cal-fi"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"/></filter></defs><g filter="url(#cal-fi)"><rect x="3" y="7" width="16" height="16" rx="1.5" fill="url(#cal-gf)"/><polygon points="3,7 19,7 24,3 8,3" fill="url(#cal-gt)"/><polygon points="19,7 24,3 24,19 19,23" fill="url(#cal-gs)"/></g><line x1="3" y1="12" x2="19" y2="12" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><line x1="3" y1="17" x2="19" y2="17" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/><line x1="8" y1="7" x2="8" y2="23" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/><line x1="13" y1="7" x2="13" y2="23" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/></svg></div><div><div class="tc-name">Calendly</div><div class="tc-role" data-en="Closed Meeting Booking" data-ar="حجز الاجتماع المغلق">Closed Meeting Booking</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lt-g1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff9070"/><stop offset="50%" stop-color="#ef4444"/><stop offset="100%" stop-color="#7a1010"/></linearGradient><linearGradient id="lt-g2" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#ff7060"/><stop offset="100%" stop-color="#b02020"/></linearGradient><filter id="lt-f"><feDropShadow dx="0" dy="2.5" stdDeviation="2.5" flood-color="#ef4444" flood-opacity="0.6"/></filter></defs><g filter="url(#lt-f)"><polygon points="15,2 21,11 16.5,11 20,26 8,15 13,15 9,2" fill="url(#lt-g1)"/><polygon points="15,2 21,11 16.5,11 20,26" fill="url(#lt-g2)" opacity="0.6"/></g><line x1="15" y1="2" x2="9" y2="15" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/></svg></div><div><div class="tc-name">Make.com / n8n</div><div class="tc-role" data-en="Workflow Automation" data-ar="أتمتة سير العمل">Workflow Automation</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="cd-gf" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#f8e8b0"/><stop offset="50%" stop-color="#D4A373"/><stop offset="100%" stop-color="#7a4010"/></linearGradient><filter id="cd-f"><feDropShadow dx="1" dy="2.5" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><g filter="url(#cd-f)" transform="rotate(-8 14 14)"><rect x="2" y="8" width="22" height="14" rx="2" fill="url(#cd-gf)"/><rect x="2" y="12" width="22" height="4" fill="rgba(0,0,0,0.3)"/><rect x="4" y="17.5" width="8" height="2" rx="1" fill="rgba(255,255,255,0.5)"/><rect x="2" y="8" width="22" height="3" rx="2" fill="rgba(255,255,255,0.2)"/></g></svg></div><div><div class="tc-name">Stripe</div><div class="tc-role" data-en="Payments (Phase 2)" data-ar="المدفوعات (المرحلة 2)">Payments (Phase 2)</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="bl-rg" cx="35%" cy="25%" r="75%"><stop offset="0%" stop-color="#FFEAB0"/><stop offset="50%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#6F540D"/></radialGradient><filter id="bl-f"><feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-color="#D4AF37" flood-opacity="0.5"/></filter></defs><g filter="url(#bl-f)"><path d="M14,3 C9.5,3 6,7 6,12 L6,19 L22,19 L22,12 C22,7 18.5,3 14,3 Z" fill="url(#bl-rg)"/><rect x="6" y="18.5" width="16" height="2.5" rx="1.25" fill="rgba(212,175,55,0.8)"/><ellipse cx="14" cy="23" rx="3" ry="1.5" fill="rgba(212,175,55,0.7)"/></g><ellipse cx="10" cy="8.5" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-20 10 8.5)"/></svg></div><div><div class="tc-name">Resend / WhatsApp</div><div class="tc-role" data-en="Notifications" data-ar="الإشعارات">Notifications</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ph-gf" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#f0d080"/><stop offset="100%" stop-color="#c07830"/></linearGradient><filter id="ph-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.45"/></filter></defs><g filter="url(#ph-f)"><rect x="2" y="18" width="6" height="8" rx="1.5" fill="url(#ph-gf)"/><ellipse cx="5" cy="18" rx="3" ry="1.2" fill="#f8e8a0"/><rect x="11" y="12" width="6" height="14" rx="1.5" fill="url(#ph-gf)"/><ellipse cx="14" cy="12" rx="3" ry="1.2" fill="#faf0c0"/><rect x="20" y="6" width="6" height="20" rx="1.5" fill="url(#ph-gf)"/><ellipse cx="23" cy="6" rx="3" ry="1.2" fill="#fffad0"/></g></svg></div><div><div class="tc-name">PostHog</div><div class="tc-role" data-en="Analytics + Behavior" data-ar="التحليلات + السلوك">Analytics + Behavior</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="pc-rg" cx="33%" cy="28%" r="72%"><stop offset="0%" stop-color="#f5e0a0"/><stop offset="45%" stop-color="#D4A373"/><stop offset="100%" stop-color="#5a2a08"/></radialGradient><filter id="pc-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.5"/></filter></defs><circle cx="14" cy="14" r="11" fill="url(#pc-rg)" filter="url(#pc-f)"/><circle cx="14" cy="14" r="3" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/><circle cx="14" cy="14" r="1.5" fill="rgba(255,255,255,0.45)"/><line x1="14" y1="3" x2="14" y2="11" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><line x1="14" y1="17" x2="14" y2="25" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><line x1="3" y1="14" x2="11" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><line x1="17" y1="14" x2="25" y2="14" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/><circle cx="14" cy="3" r="1.2" fill="rgba(255,255,255,0.45)"/><circle cx="25" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"/><circle cx="3" cy="14" r="1.2" fill="rgba(255,255,255,0.45)"/><circle cx="14" cy="25" r="1.2" fill="rgba(255,255,255,0.45)"/><ellipse cx="10" cy="8" rx="2.5" ry="1.4" fill="rgba(255,255,255,0.18)" transform="rotate(-25 10 8)"/></svg></div><div><div class="tc-name">Pinecone / Chroma</div><div class="tc-role" data-en="AI Matching (Phase 2)" data-ar="مطابقة AI (المرحلة 2)">AI Matching (Phase 2)</div></div></div>
+    <div class="tech-card"><div class="tc-ico"><svg width="26" height="26" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="gr-rg" cx="35%" cy="30%" r="70%"><stop offset="0%" stop-color="#f5e0a0"/><stop offset="50%" stop-color="#D4A373"/><stop offset="100%" stop-color="#7a4010"/></radialGradient><filter id="gr-f"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#D4A373" flood-opacity="0.45"/></filter></defs><g filter="url(#gr-f)"><path d="M14,5.5 L15.8,3 L17.6,5.5 L20.2,4.5 L20.2,7.2 L23,8 L22,10.5 L25,12.5 L22.5,15 L24,17.5 L21,19 L21,21.5 L18.2,21 L17,24 L14,22.5 L11,24 L9.8,21 L7,21.5 L7,19 L4,17.5 L5.5,15 L3,12.5 L6,10.5 L5,8 L7.8,7.2 L7.8,4.5 L10.4,5.5 Z" fill="url(#gr-rg)"/><circle cx="14" cy="14" r="4.5" fill="rgba(0,0,0,0.3)"/><circle cx="14" cy="14" r="2.5" fill="rgba(255,255,255,0.15)"/></g><ellipse cx="10" cy="8" rx="2.5" ry="1.5" fill="rgba(255,255,255,0.2)" transform="rotate(-30 10 8)"/></svg></div><div><div class="tc-name">Next.js</div><div class="tc-role" data-en="Full Platform (Phase 2)" data-ar="المنصة الكاملة (المرحلة 2)">Full Platform (Phase 2)</div></div></div>
   </div>
 </div>
 
 <!-- ══════════ FINAL CTA ══════════ -->
-<div class="fcta reveal in">
-  <h2 data-en="The Idea&lt;br&gt;Is &lt;span&gt;Ready.&lt;/span&gt;&lt;br&gt;Are You?" data-ar="الفكرة&lt;br&gt;&lt;span&gt;جاهزة.&lt;/span&gt;&lt;br&gt;هل أنت؟">The Idea<br>Is <span>Ready.</span><br>Are You?</h2>
+<div class="fcta reveal">
+  <h2 data-en="The Idea<br>Is <span>Ready.</span><br>Are You?" data-ar="الفكرة<br><span>جاهزة.</span><br>هل أنت؟">The Idea<br>Is <span>Ready.</span><br>Are You?</h2>
   <p data-en="UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin." data-ar="UrLife ليس فكرة أخرى على قائمتك. إنه المنصة التي تجعل كل فكرة أخرى ممكنة. القرار الوحيد المتبقي هو البدء.">UrLife is not another idea on your list. It's the platform that makes every other idea possible. The only decision left is to begin.</p>
   <div class="fcta-btns">
     <button id="cta-submit-btn" class="btn-primary" style="font-size:16px;padding:18px 52px;" data-en="Submit Your Idea Now" data-ar="قدّم فكرتك الآن">Submit Your Idea Now</button>
@@ -2338,15 +2052,15 @@ html {
 </div>
 
 <!-- ══════════ IDEAS FEED ══════════ -->
-<section id="ideas-feed-section" hidden="">
+<section id="ideas-feed-section" hidden>
   <span class="sec-chip">Your Submitted Ideas</span>
   <h2 class="sec-title">Launched <span class="g">Ideas</span></h2>
   <div id="ideas-feed-list"></div>
 </section>
 
-<footer class="footer-luxe reveal-3d" data-reveal="rise">
+<footer class="footer-luxe">
   <div class="f-logo"><span>UR LF <span style="color:#D4A373;">✘</span> <span style="color:#ef4444;">UP ™</span></span></div>
-  <p class="footer-tagline">Where Minds Meet — Zero Financial Barriers</p>
+  <p class="footer-tagline">Where Minds Meet<span class="footer-sep">—</span>Zero Financial Barriers</p>
   <p class="footer-meta"><span>Global Platform</span><span class="footer-dot">·</span><span>AI-Powered</span></p>
 </footer>
 
@@ -2364,40 +2078,40 @@ html {
     <!-- Login panel -->
     <div id="auth-panel-login" role="tabpanel">
       <h2 class="modal-title" id="auth-modal-title">Welcome Back</h2>
-      <form id="login-form" novalidate="" autocomplete="on">
+      <form id="login-form" novalidate autocomplete="on">
         <div class="field-group">
           <label for="login-email">Email</label>
-          <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@example.com" required="">
+          <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@example.com" required>
         </div>
         <div class="field-group">
           <label for="login-password">Password</label>
-          <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="••••••••" required="">
+          <input type="password" id="login-password" name="password" autocomplete="current-password" placeholder="••••••••" required>
         </div>
-        <div id="login-error" class="error-slot" hidden=""></div>
+        <div id="login-error" class="error-slot" hidden></div>
         <button type="submit" id="login-submit" class="btn-primary" style="width:100%;margin-top:4px;">Sign In</button>
       </form>
     </div>
 
     <!-- Register panel -->
-    <div id="auth-panel-register" role="tabpanel" hidden="">
+    <div id="auth-panel-register" role="tabpanel" hidden>
       <h2 class="modal-title">Join UrLife</h2>
-      <form id="register-form" novalidate="" autocomplete="on">
+      <form id="register-form" novalidate autocomplete="on">
         <div class="field-group">
           <label for="register-name">Full Name</label>
-          <input type="text" id="register-name" name="fullName" autocomplete="name" placeholder="Your full name" required="">
+          <input type="text" id="register-name" name="fullName" autocomplete="name" placeholder="Your full name" required>
         </div>
         <div class="field-group">
           <label for="register-email">Email</label>
-          <input type="email" id="register-email" name="email" autocomplete="email" placeholder="you@example.com" required="">
+          <input type="email" id="register-email" name="email" autocomplete="email" placeholder="you@example.com" required>
         </div>
         <div class="field-group">
           <label for="register-password">Password</label>
-          <input type="password" id="register-password" name="password" autocomplete="new-password" placeholder="Min 8 chars · letters + numbers" required="">
+          <input type="password" id="register-password" name="password" autocomplete="new-password" placeholder="Min 8 chars · letters + numbers" required>
         </div>
         <div class="field-group">
           <label for="register-role">Your Role</label>
-          <select id="register-role" name="role" required="">
-            <option value="" disabled="" selected="">Select your role</option>
+          <select id="register-role" name="role" required>
+            <option value="" disabled selected>Select your role</option>
             <option value="visionary">Visionary — I have an idea to build</option>
             <option value="builder">Builder — I build things</option>
             <option value="enabler">Enabler — I fund and enable</option>
@@ -2405,12 +2119,12 @@ html {
         </div>
         <div class="field-group">
           <label for="register-skills">Skills (comma-separated)</label>
-          <input type="text" id="register-skills" name="skills" autocomplete="off" placeholder="e.g. design, react, marketing" required="">
+          <input type="text" id="register-skills" name="skills" autocomplete="off" placeholder="e.g. design, react, marketing" required>
         </div>
-        <div id="register-error" class="error-slot" hidden=""></div>
+        <div id="register-error" class="error-slot" hidden></div>
         <button type="submit" id="register-submit" class="btn-primary" style="width:100%;margin-top:4px;">Create Account</button>
       </form>
-      <div id="register-confirm-msg" class="confirm-msg" hidden="">
+      <div id="register-confirm-msg" class="confirm-msg" hidden>
         Check your inbox — we sent you a confirmation link. Once verified, sign in above.
       </div>
     </div>
@@ -2422,30 +2136,30 @@ html {
   <div class="modal-card modal-card--wide" role="dialog" aria-modal="true" aria-labelledby="idea-modal-title">
     <button id="idea-modal-close" class="modal-close" aria-label="Close">✕</button>
 
-    <div id="idea-role-gate" class="role-gate" hidden="">
+    <div id="idea-role-gate" class="role-gate" hidden>
       <p>Only <strong>Visionaries</strong> can submit ideas.<br>Update your role in your profile to continue.</p>
     </div>
 
     <div id="idea-form-wrap">
       <h2 class="modal-title" id="idea-modal-title">Launch Your Idea</h2>
-      <form id="idea-form" novalidate="">
+      <form id="idea-form" novalidate>
         <div class="field-group">
           <label for="idea-title">Idea Title</label>
-          <input type="text" id="idea-title" name="title" maxlength="200" placeholder="What is your idea called?" required="">
+          <input type="text" id="idea-title" name="title" maxlength="200" placeholder="What is your idea called?" required>
         </div>
         <div class="field-group">
           <label for="idea-industry">Industry</label>
-          <input type="text" id="idea-industry" name="industry" maxlength="80" placeholder="e.g. FinTech, Healthcare, EdTech" required="">
+          <input type="text" id="idea-industry" name="industry" maxlength="80" placeholder="e.g. FinTech, Healthcare, EdTech" required>
         </div>
         <div class="field-group">
           <label for="idea-problem">Problem It Solves</label>
-          <textarea id="idea-problem" name="problem" maxlength="5000" placeholder="Describe the problem in detail (min 20 characters)..." required=""></textarea>
+          <textarea id="idea-problem" name="problem" maxlength="5000" placeholder="Describe the problem in detail (min 20 characters)..." required></textarea>
         </div>
         <div class="field-group">
           <label for="idea-skills">Skills Required (comma-separated, optional)</label>
           <input type="text" id="idea-skills" name="skills" autocomplete="off" placeholder="e.g. react, machine learning, finance">
         </div>
-        <div id="idea-error" class="error-slot" hidden=""></div>
+        <div id="idea-error" class="error-slot" hidden></div>
         <button type="submit" id="idea-submit" class="btn-primary" style="width:100%;margin-top:4px;">Launch Idea</button>
       </form>
     </div>
@@ -2458,20 +2172,20 @@ html {
     <h2 class="glass-modal-title" id="settings-modal-title">Account Settings</h2>
     <button id="settings-modal-close" class="glass-modal-close" aria-label="Close">✕</button>
   </div>
-  <form id="settings-form" novalidate="">
+  <form id="settings-form" novalidate>
     <!-- Avatar zone -->
     <div id="settings-avatar-zone" class="avatar-zone" data-mode="empty">
       <div class="avatar-circle" role="img" aria-label="Profile photo">
-        <img class="avatar-img" alt="" hidden="">
+        <img class="avatar-img" alt="" hidden>
         <span class="avatar-placeholder">+</span>
       </div>
       <div class="avatar-controls">
         <button type="button" data-action="upload">Upload</button>
         <button type="button" data-action="url">Paste URL</button>
-        <button type="button" data-action="remove" hidden="">Remove</button>
+        <button type="button" data-action="remove" hidden>Remove</button>
       </div>
-      <input type="file" accept="image/png,image/jpeg,image/webp" hidden="" aria-hidden="true">
-      <input type="url" placeholder="https://…" hidden="" aria-hidden="true" style="width:100%;margin-block-start:6px;background:var(--lift,#111827);border:1px solid rgba(212,175,55,0.2);border-radius:var(--r,8px);padding:8px 12px;color:var(--ice-white,#f5f5f5);font-size:var(--fs-small);font-family:var(--font-body-en);">
+      <input type="file" accept="image/png,image/jpeg,image/webp" hidden aria-hidden="true">
+      <input type="url" placeholder="https://…" hidden aria-hidden="true" style="width:100%;margin-block-start:6px;background:var(--lift,#111827);border:1px solid rgba(212,175,55,0.2);border-radius:var(--r,8px);padding:8px 12px;color:var(--ice-white,#f5f5f5);font-size:var(--fs-small);font-family:var(--font-body-en);">
     </div>
     <div class="field-group">
       <label for="settings-name">Full Name</label>
@@ -2501,7 +2215,7 @@ html {
           <div class="role-card-inner">
             <div class="role-icon-wrap" id="role-icon-enabler"></div>
             <div class="role-card-name">Enabler</div>
-            <div class="role-card-desc">Fund &amp; connect</div>
+            <div class="role-card-desc">Fund & connect</div>
           </div>
         </label>
       </div>
@@ -2509,7 +2223,7 @@ html {
     <div class="field-group" style="margin-block-start:20px;">
       <label>Skills</label>
       <div class="skill-chips-field" id="settings-skill-chips-wrap">
-        <div id="settings-skill-chips" data-chips=""></div>
+        <div id="settings-skill-chips" data-chips></div>
         <input type="text" id="settings-skills-input" placeholder="Type a skill, press Enter" autocomplete="off">
       </div>
     </div>
@@ -2523,11 +2237,11 @@ html {
     <div class="field-group" style="margin-block-start:16px;">
       <label>Interests</label>
       <div class="skill-chips-field" id="settings-interest-chips-wrap">
-        <div id="settings-interest-chips" data-chips=""></div>
+        <div id="settings-interest-chips" data-chips></div>
         <input type="text" id="settings-interests-input" placeholder="e.g. fintech, climate, web3" autocomplete="off">
       </div>
     </div>
-    <div id="settings-error" class="error-slot" hidden=""></div>
+    <div id="settings-error" class="error-slot" hidden></div>
     <div class="settings-actions">
       <button type="button" id="settings-cancel" class="btn-ghost">Cancel</button>
       <button type="submit" id="settings-submit" class="btn-gold">Save Changes</button>
@@ -2615,16 +2329,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     navigator.serviceWorker.register('sw.js');
   }
 </script>
-
-
-
-<script type="module" src="/src/main.js"></script>
-<script type="module" src="/src/dashboard.js"></script>
-<script type="module" src="/src/core.js"></script>
 <script type="module" src="/src/icons.js"></script>
 <script type="module" src="/src/cursor.js"></script>
-<script type="module" src="/src/scroll-engine.js"></script>
 <script type="module" src="/src/settings.js"></script>
-<script type="module" src="/src/avatar.js"></script>
-
-</body></html>
+<script type="module" src="/src/main.js"></script>
+<script type="module" src="/src/dashboard.js"></script>
+</html>
